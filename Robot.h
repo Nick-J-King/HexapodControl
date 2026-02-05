@@ -97,7 +97,4 @@ extern Leg lLB;
 extern Leg lLM;
 
 
-void PushForwardAllPWM(int amount, int Time);
-void PushBackwardAllPWM(int amount, int Time);
-void CenterAllPWM(int Time);
-void NaturalAllPWM(int Time);
+// END

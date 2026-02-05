@@ -3,7 +3,6 @@
 #include <Arduino.h>
 #include "Robot.h"
 
-//>>> Record current PWM, and don't send if it is the same...
 
 Servo::Servo(int Pin, int Min, int Max, int Natural)
 {
@@ -11,6 +10,8 @@ Servo::Servo(int Pin, int Min, int Max, int Natural)
   _Min = Min;
   _Max = Max;
   _Natural = Natural;   // PWM in "natural" position.
+
+  _CurrentPWM = 0;
 }
 
 
@@ -35,6 +36,9 @@ void Servo::PositionAngle(float angle, int Time)
 
 void Servo::PositionPWM(int Pos, int Time)
 {
+  if (_CurrentPWM == Pos)
+    return;
+
   char sBuffer [35];
 
   if (Time == 0)
@@ -47,6 +51,8 @@ void Servo::PositionPWM(int Pos, int Time)
   }
 
   Serial.println(sBuffer);
+
+  _CurrentPWM = Pos;
 }
 
 
@@ -62,27 +68,4 @@ void Servo::NaturalPWM(int Time)
 }
 
 
-void Servo::PushForwardPWM(int amount, int Time)
-{
-  // From natural, go a bit towards "max".
-  int pos;
-  if (_Max > _Natural)
-    pos = _Natural + amount;
-  else
-    pos = _Natural - amount;
-
-  PositionPWM(pos, Time);
-}
-
-
-void Servo::PushBackwardPWM(int amount, int Time)
-{
-  // From natural, go a bit towards "min".
-  int pos;
-  if (_Max < _Natural)
-    pos = _Natural + amount;
-  else
-    pos = _Natural - amount;
-
-  PositionPWM(pos, Time);
-}
+// END

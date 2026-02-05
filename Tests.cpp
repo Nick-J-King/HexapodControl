@@ -4,34 +4,6 @@
 //>>> Add exercise to move body up and down...
 
 
-void ExerciseLeg(Leg *leg)
-{
-  leg->LowerLegOutPWM(800, 1000);
-  delay(2000);
-  leg->UpperLegDownPWM(800, 1000);
-  delay(2000);
-  leg->UpperLegUpPWM(800, 1000);
-  leg->LowerLegInPWM(800, 1000);
-  delay(2000);
-
-  leg->NaturalPWM(1000);
-  delay(1500);
-}
-
-
-void ExerciseAllLegs()
-{
-    ExerciseLeg(&lRF);
-    ExerciseLeg(&lRM);
-    ExerciseLeg(&lRB);
-
-    ExerciseLeg(&lLB);
-    ExerciseLeg(&lLM);
-    ExerciseLeg(&lLF);
-}
-
-
-
 void CycleLegs()
 {
 P("Right front foot test");

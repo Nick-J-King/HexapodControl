@@ -8,7 +8,7 @@
 
 // Knee: Min retracted, Max extended
 // Vertical: Min down, Max up
-// Horizontal: Min back, Max forward
+// Horizontal: Min CCW, Max CW
 
 Servo sRFK(RFK, 1000, 2000, 1514);  //1489);
 Servo sRFV(RFV, 2000, 1000, 1428);  //1466);  //1428);
@@ -54,28 +54,6 @@ Leg lRB(XPOS, -YPOS, &sRBK, &sRBV, &sRBH, 135.0, RX, BY, Z);
 Leg lLB(-XPOS, -YPOS, &sLBK, &sLBV, &sLBH, -135.0, LX, BY, Z);
 Leg lLM(-XPOSM, 0, &sLMK, &sLMV, &sLMH, -90.0, LMX, MY, Z);
 Leg lLF(-XPOS, YPOS, &sLFK, &sLFV, &sLFH, -45.0, LX, FY, Z);
-
-
-void PushForwardAllPWM(int amount, int Time)
-{
-  lLF.PushForwardPWM(amount, Time);
-  lLM.PushForwardPWM(amount, Time);
-  lLB.PushForwardPWM(amount, Time);
-  lRF.PushForwardPWM(amount, Time);
-  lRM.PushForwardPWM(amount, Time);
-  lRB.PushForwardPWM(amount, Time);
-}
-
-
-void PushBackwardAllPWM(int amount, int Time)
-{
-  lLF.PushBackwardPWM(amount, Time);
-  lLM.PushBackwardPWM(amount, Time);
-  lLB.PushBackwardPWM(amount, Time);
-  lRF.PushBackwardPWM(amount, Time);
-  lRM.PushBackwardPWM(amount, Time);
-  lRB.PushBackwardPWM(amount, Time);
-}
 
 
 void CenterAllPWM(int Time)

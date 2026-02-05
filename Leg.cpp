@@ -17,6 +17,10 @@ Leg::Leg(float xPos, float yPos, Servo *Knee, Servo *Vertical, Servo *Horizontal
   _FootXNatural = FootX;
   _FootYNatural = FootY;
   _FootZNatural = FootZ;
+
+  _FootXCurrent = -1000;
+  _FootYCurrent = -1000;
+  _FootZCurrent = -1000;
 }
 
 
@@ -32,6 +36,8 @@ void Leg::SetFootNaturalDelta(float x, float y, float z, int Time)
 }
 
 
+// Set foot position relative to "natural" foot position.
+// x is right, y is forward, z is down
 void Leg::SetFootPosition(float x, float y, float z, int Time)
 {
   float kneeAngle;
@@ -46,6 +52,11 @@ void Leg::SetFootPosition(float x, float y, float z, int Time)
   _Knee->PositionAngle(kneeAngle, Time);
   _Vertical->PositionAngle(verticalAngle, Time);
   _Horizontal->PositionAngle(hipAngle, Time);
+
+  _FootXCurrent = x;
+  _FootYCurrent = y;
+  _FootZCurrent = z;
+
 }
 
 
@@ -63,44 +74,4 @@ void Leg::NaturalPWM(int Time)
   _Knee->NaturalPWM(Time);
   _Vertical->NaturalPWM(Time);
   _Horizontal->NaturalPWM(Time);
-}
-
-
-void Leg::PushForwardPWM(int amount, int Time)
-{
-  _Knee->PushForwardPWM(amount, Time);
-  _Vertical->PushForwardPWM(amount, Time);
-  _Horizontal->PushForwardPWM(amount, Time);
-}
-
-
-void Leg::PushBackwardPWM(int amount, int Time)
-{
-  _Knee->PushBackwardPWM(amount, Time);
-  _Vertical->PushBackwardPWM(amount, Time);
-  _Horizontal->PushBackwardPWM(amount, Time);
-}
-
-
-void Leg::LowerLegOutPWM(int amount, int Time)
-{
-  _Knee->PushForwardPWM(amount, Time);
-}
-
-
-void Leg::LowerLegInPWM(int amount, int Time)
-{
-  _Knee->PushBackwardPWM(amount, Time);
-}
-
-
-void Leg::UpperLegUpPWM(int amount, int Time)
-{
-  _Vertical->PushForwardPWM(amount, Time);
-}
-
-
-void Leg::UpperLegDownPWM(int amount, int Time)
-{
-  _Vertical->PushBackwardPWM(amount, Time);
 }

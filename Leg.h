@@ -14,11 +14,15 @@ class Leg
 
     float _xPos;  // Position of hip axis in mm.
     float _yPos;
-    float _Angle; // Angle from forward = 0 degrees. Left is negative, Right is positive.
+    float _Angle; // Natural angle from forward = 0 degrees. Left is negative, Right is positive.
 
     float _FootXNatural;
     float _FootYNatural;
     float _FootZNatural;
+
+    float _FootXCurrent;
+    float _FootYCurrent;
+    float _FootZCurrent;
 
     Leg(float xPos, float yPos, Servo *Knee, Servo *Vertical, Servo *Horizontal, float Angle, float FootX, float FootY, float FootZ);
 
@@ -30,14 +34,6 @@ class Leg
     
     void CenterPWM(int Time);   // Centre all servos in the leg (ABSOLUTE_MIDDLE).
     void NaturalPWM(int Time);  // Centre of the servos to "natural" rest position.
-
-    // Move by a PWM time from "natural" PWM position.
-    void PushForwardPWM(int amount, int Time);
-    void PushBackwardPWM(int amount, int Time);
-    void LowerLegOutPWM(int amount, int Time);
-    void LowerLegInPWM(int amount, int Time);
-    void UpperLegUpPWM(int amount, int Time);
-    void UpperLegDownPWM(int amount, int Time);
 };
 
 #endif
