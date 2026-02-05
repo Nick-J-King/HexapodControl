@@ -1,6 +1,9 @@
 #ifndef Servo_h
 #define Servo_h
 
+class Leg;
+
+
 class Servo
 {
   private:
@@ -8,21 +11,23 @@ class Servo
     int _Pin;
     int _Min;
     int _Max;
-    int _Natural;
+    int _Natural;   // PMW at zero degrees.
+
+    Leg *_leg;
 
     int _CurrentPWM;
+    int _CurrentAngle;
+
+    void SetPWM(int Pos, int Time);   // Set Position by PWM (us) and Time (ms).
 
   public:
 
     Servo(int Pin, int Min, int Max, int Natural);
-
-    void PositionAngle(float angle, int Time);
+    void SetLeg(Leg *leg) { _leg = leg; }
     
-    void PositionPWM(int Pos, int Time);   // Set Position by PWM (us) and Time (ms).
-    void CenterPWM(int Time);  // Go to 1500
-    void NaturalPWM(int Time); // Go to "resting" position.
-
-    int CurrentPWM();
+    void SetAngle(float angle, int Time);
+    
+    int CurrentAngle();
 };
 
 

@@ -60,32 +60,40 @@ float GetAngleFromCosineLaw(float opp, float adj1, float adj2)
 //  x to the right
 //  y forward
 //  z down
-void ComputeAngles(float x, float y, float z, float hipNatural, float hipX, float hipY, float *kneeAngleOut, float *verticalAngleOut, float *hipAngleOut, float *distanceOut)
+
+// Forward kinematics to determine foot position from given servo angles.
+void ComputeFootPosition(float hipNatural, float hipX, float hipY, float kneeAngle, float verticalAngle, float hipAngle, float *xOut, float *yOut, float *zOut)
+{
+  
+}
+
+
+// Inverse kinematics to determine servo angles from the desired foot position.
+void ComputeAngles(float x, float y, float z, float hipNatural, float hipX, float hipY, float *kneeAngleOut, float *verticalAngleOut, float *hipAngleOut)
 {
   float xNormal;
   float yNormal;
 
   NormalisePosition(x, y, z, hipNatural, hipX, hipY, &xNormal, &yNormal);
 
-  *distanceOut = sqrt(xNormal * xNormal + yNormal * yNormal) - HIPWIDTH;
+  float distanceOut = sqrt(xNormal * xNormal + yNormal * yNormal) - HIPWIDTH;
   *hipAngleOut = rad2deg(atan2(xNormal, yNormal));
 
     // >> If distance too small, use natural hip angle...
     // >> If angle > 90 or < -90, reverse it!!
-  float dist2foot = sqrt(z * z + *distanceOut * *distanceOut);
+  float dist2foot = sqrt(z * z + distanceOut * distanceOut);
     // If distance to foot is > FEMURLENGTH + TIBIALENGTH, we have a problem!
 
   *kneeAngleOut = GetAngleFromCosineLaw(dist2foot, FEMURLENGTH, TIBIALENGTH) - 90.0;
 
   float c = GetAngleFromCosineLaw(TIBIALENGTH, FEMURLENGTH, dist2foot);
-  float d = rad2deg(atan2(z, *distanceOut));
+  float d = rad2deg(atan2(z, distanceOut));
   
   *verticalAngleOut = c - d;
 }
 
 
 // >>> OPTIMISE
-// >>> DON'T NEED Z
 
 void NormalisePosition(float x, float y, float z, float hipNatural, float hipX, float hipY, float *xOut, float *yOut)
 {

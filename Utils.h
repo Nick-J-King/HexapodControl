@@ -19,7 +19,7 @@ void SerialWrite();
 int Clamp(int val, int Min, int Max);
 float GetAngleFromCosineLaw(float opp, float adj1, float adj2);
 
-void ComputeAngles(float x, float y, float z, float hipNatural, float hipX, float hipY, float *kneeAngleOut, float *verticalAngleOut, float *hipAngleOut, float *distanceOut);
+void ComputeAngles(float x, float y, float z, float hipNatural, float hipX, float hipY, float *kneeAngleOut, float *verticalAngleOut, float *hipAngleOut);
 void NormalisePosition(float x, float y, float z, float hipNatural, float hipX, float hipY, float *xOut, float *yOut);
 
 void P(char *s);

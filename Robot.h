@@ -8,9 +8,9 @@
 
 // >>> MAKE THIS A CLASS
 
-#define T 200
-#define D 1000
-#define BLD 2000
+
+#define UNKNOWN_ANGLE -1000
+#define UNKNOWN_POSITION -1000
 
 
 // PWM values.

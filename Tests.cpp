@@ -3,6 +3,10 @@
 
 //>>> Add exercise to move body up and down...
 
+#define T 200
+#define D 1000
+#define BLD 2000
+
 
 void CycleLegs()
 {
@@ -10,33 +14,33 @@ P("Right front foot test");
 NL();
 
   // RF test
-  P("SetFootNaturalDelta 0, 0, 0");
-  lRF.SetFootNaturalDelta(0.0, 0.0, 0.0, T);
+  P("SetFootNatural 0, 0, 0");
+  lRF.SetFootNatural(0.0, 0.0, 0.0, T);
   NL();
   delay(D);
   
-  P("1 - SetFootNaturalDelta -50, 50, 0");
-  lRF.SetFootNaturalDelta(-50.0, 50.0, -30.0, T);
+  P("1 - SetFootNatural -50, 50, 0");
+  lRF.SetFootNatural(-50.0, 50.0, -30.0, T);
   NL();
   delay(D);
   
-  P("2 - SetFootNaturalDelta 50, 50, 0");
-  lRF.SetFootNaturalDelta(50.0, 50.0, -30.0, T);
+  P("2 - SetFootNatural 50, 50, 0");
+  lRF.SetFootNatural(50.0, 50.0, -30.0, T);
   NL();
   delay(D);
 
-  P("3 - SetFootNaturalDelta 50, -50, 0");
-  lRF.SetFootNaturalDelta(50.0, -50.0, -30.0, T);
+  P("3 - SetFootNatural 50, -50, 0");
+  lRF.SetFootNatural(50.0, -50.0, -30.0, T);
   NL();
   delay(D);
   
-  P("4 - SetFootNaturalDelta -50, -50, 0");
-  lRF.SetFootNaturalDelta(-50.0, -50.0, -30.0, T);
+  P("4 - SetFootNatural -50, -50, 0");
+  lRF.SetFootNatural(-50.0, -50.0, -30.0, T);
   NL();
   delay(D);
 
-  P("SetFootNaturalDelta 0, 0, 0");
-  lRF.SetFootNaturalDelta(0.0, 0.0, 0.0, T);
+  P("SetFootNatural 0, 0, 0");
+  lRF.SetFootNatural(0.0, 0.0, 0.0, T);
   NL();
   delay(BLD);
 
@@ -45,33 +49,33 @@ NL();
 NL();
 
   // RM test
-  P("SetFootNaturalDelta 0, 0, 0");
-  lRM.SetFootNaturalDelta(0.0, 0.0, 0.0, T);
+  P("SetFootNatural 0, 0, 0");
+  lRM.SetFootNatural(0.0, 0.0, 0.0, T);
   NL();
   delay(D);
   
-  P("1 - SetFootNaturalDelta -50, 50, 0");
-  lRM.SetFootNaturalDelta(-50.0, 50.0, -30.0, T);
+  P("1 - SetFootNatural -50, 50, 0");
+  lRM.SetFootNatural(-50.0, 50.0, -30.0, T);
   NL();
   delay(D);
   
-  P("2 - SetFootNaturalDelta 50, 50, 0");
-  lRM.SetFootNaturalDelta(50.0, 50.0, -30.0, T);
+  P("2 - SetFootNatural 50, 50, 0");
+  lRM.SetFootNatural(50.0, 50.0, -30.0, T);
   NL();
   delay(D);
 
-  P("3 - SetFootNaturalDelta 50, -50, 0");
-  lRM.SetFootNaturalDelta(50.0, -50.0, -30.0, T);
+  P("3 - SetFootNatural 50, -50, 0");
+  lRM.SetFootNatural(50.0, -50.0, -30.0, T);
   NL();
   delay(D);
   
-  P("4 - SetFootNaturalDelta -50, -50, 0");
-  lRM.SetFootNaturalDelta(-50.0, -50.0, -30.0, T);
+  P("4 - SetFootNatural -50, -50, 0");
+  lRM.SetFootNatural(-50.0, -50.0, -30.0, T);
   NL();
   delay(D);
   
-  P("SetFootNaturalDelta 0, 0, 0");
-  lRM.SetFootNaturalDelta(0.0, 0.0, 0.0, T);
+  P("SetFootNatural 0, 0, 0");
+  lRM.SetFootNatural(0.0, 0.0, 0.0, T);
   NL();
   
   delay(BLD);
@@ -81,33 +85,33 @@ NL();
 NL();
 
   // RB test
-  P("SetFootNaturalDelta 0, 0, 0");
-  lRB.SetFootNaturalDelta(0.0, 0.0, 0.0, T);
+  P("SetFootNatural 0, 0, 0");
+  lRB.SetFootNatural(0.0, 0.0, 0.0, T);
   NL();
   delay(D);
   
-  P("1 - SetFootNaturalDelta -50, 50, 0");
-  lRB.SetFootNaturalDelta(-50.0, 50.0, -30.0, T);
+  P("1 - SetFootNatural -50, 50, 0");
+  lRB.SetFootNatural(-50.0, 50.0, -30.0, T);
   NL();
   delay(D);
   
-  P("2 - SetFootNaturalDelta 50, 50, 0");
-  lRB.SetFootNaturalDelta(50.0, 50.0, -30.0, T);
+  P("2 - SetFootNatural 50, 50, 0");
+  lRB.SetFootNatural(50.0, 50.0, -30.0, T);
   NL();
   delay(D);
 
-  P("3 - SetFootNaturalDelta 50, -50, 0");
-  lRB.SetFootNaturalDelta(50.0, -50.0, -30.0, T);
+  P("3 - SetFootNatural 50, -50, 0");
+  lRB.SetFootNatural(50.0, -50.0, -30.0, T);
   NL();
   delay(D);
   
-  P("4 - SetFootNaturalDelta -50, -50, 0");
-  lRB.SetFootNaturalDelta(-50.0, -50.0, -30.0, T);
+  P("4 - SetFootNatural -50, -50, 0");
+  lRB.SetFootNatural(-50.0, -50.0, -30.0, T);
   NL();
   delay(D);
   
-  P("SetFootNaturalDelta 0, 0, 0");
-  lRB.SetFootNaturalDelta(0.0, 0.0, 0.0, T);
+  P("SetFootNatural 0, 0, 0");
+  lRB.SetFootNatural(0.0, 0.0, 0.0, T);
   NL();
   delay(BLD);
 
@@ -117,33 +121,33 @@ P("Left front foot test");
 NL();
 
   // LF test
-  P("SetFootNaturalDelta 0, 0, 0");
-  lLF.SetFootNaturalDelta(0.0, 0.0, 0.0, T);
+  P("SetFootNatural 0, 0, 0");
+  lLF.SetFootNatural(0.0, 0.0, 0.0, T);
   NL();
   delay(D);
   
-  P("1 - SetFootNaturalDelta -50, 50, 0");
-  lLF.SetFootNaturalDelta(-50.0, 50.0, -30.0, T);
+  P("1 - SetFootNatural -50, 50, 0");
+  lLF.SetFootNatural(-50.0, 50.0, -30.0, T);
   NL();
   delay(D);
   
-  P("2 - SetFootNaturalDelta 50, 50, 0");
-  lLF.SetFootNaturalDelta(50.0, 50.0, -30.0, T);
+  P("2 - SetFootNatural 50, 50, 0");
+  lLF.SetFootNatural(50.0, 50.0, -30.0, T);
   NL();
   delay(D);
 
-  P("3 - SetFootNaturalDelta 50, -50, 0");
-  lLF.SetFootNaturalDelta(50.0, -50.0, -30.0, T);
+  P("3 - SetFootNatural 50, -50, 0");
+  lLF.SetFootNatural(50.0, -50.0, -30.0, T);
   NL();
   delay(D);
   
-  P("4 - SetFootNaturalDelta -50, -50, 0");
-  lLF.SetFootNaturalDelta(-50.0, -50.0, -30.0, T);
+  P("4 - SetFootNatural -50, -50, 0");
+  lLF.SetFootNatural(-50.0, -50.0, -30.0, T);
   NL();
   delay(D);
 
-  P("SetFootNaturalDelta 0, 0, 0");
-  lLF.SetFootNaturalDelta(0.0, 0.0, 0.0, T);
+  P("SetFootNatural 0, 0, 0");
+  lLF.SetFootNatural(0.0, 0.0, 0.0, T);
   NL();
   delay(BLD);
 
@@ -152,33 +156,33 @@ NL();
 NL();
 
   // RM test
-  P("SetFootNaturalDelta 0, 0, 0");
-  lLM.SetFootNaturalDelta(0.0, 0.0, 0.0, T);
+  P("SetFootNatural 0, 0, 0");
+  lLM.SetFootNatural(0.0, 0.0, 0.0, T);
   NL();
   delay(D);
   
-  P("1 - SetFootNaturalDelta -50, 50, 0");
-  lLM.SetFootNaturalDelta(-50.0, 50.0, -30.0, T);
+  P("1 - SetFootNatural -50, 50, 0");
+  lLM.SetFootNatural(-50.0, 50.0, -30.0, T);
   NL();
   delay(D);
   
-  P("2 - SetFootNaturalDelta 50, 50, 0");
-  lLM.SetFootNaturalDelta(50.0, 50.0, -30.0, T);
+  P("2 - SetFootNatural 50, 50, 0");
+  lLM.SetFootNatural(50.0, 50.0, -30.0, T);
   NL();
   delay(D);
 
-  P("3 - SetFootNaturalDelta 50, -50, 0");
-  lLM.SetFootNaturalDelta(50.0, -50.0, -30.0, T);
+  P("3 - SetFootNatural 50, -50, 0");
+  lLM.SetFootNatural(50.0, -50.0, -30.0, T);
   NL();
   delay(D);
   
-  P("4 - SetFootNaturalDelta -50, -50, 0");
-  lLM.SetFootNaturalDelta(-50.0, -50.0, -30.0, T);
+  P("4 - SetFootNatural -50, -50, 0");
+  lLM.SetFootNatural(-50.0, -50.0, -30.0, T);
   NL();
   delay(D);
   
-  P("SetFootNaturalDelta 0, 0, 0");
-  lLM.SetFootNaturalDelta(0.0, 0.0, 0.0, T);
+  P("SetFootNatural 0, 0, 0");
+  lLM.SetFootNatural(0.0, 0.0, 0.0, T);
   NL();
   
   delay(BLD);
@@ -188,33 +192,33 @@ NL();
 NL();
 
   // LB test
-  P("SetFootNaturalDelta 0, 0, 0");
-  lLB.SetFootNaturalDelta(0.0, 0.0, 0.0, T);
+  P("SetFootNatural 0, 0, 0");
+  lLB.SetFootNatural(0.0, 0.0, 0.0, T);
   NL();
   delay(D);
   
-  P("1 - SetFootNaturalDelta -50, 50, 0");
-  lLB.SetFootNaturalDelta(-50.0, 50.0, -30.0, T);
+  P("1 - SetFootNatural -50, 50, 0");
+  lLB.SetFootNatural(-50.0, 50.0, -30.0, T);
   NL();
   delay(D);
   
-  P("2 - SetFootNaturalDelta 50, 50, 0");
-  lLB.SetFootNaturalDelta(50.0, 50.0, -30.0, T);
+  P("2 - SetFootNatural 50, 50, 0");
+  lLB.SetFootNatural(50.0, 50.0, -30.0, T);
   NL();
   delay(D);
 
-  P("3 - SetFootNaturalDelta 50, -50, 0");
-  lLB.SetFootNaturalDelta(50.0, -50.0, -30.0, T);
+  P("3 - SetFootNatural 50, -50, 0");
+  lLB.SetFootNatural(50.0, -50.0, -30.0, T);
   NL();
   delay(D);
   
-  P("4 - SetFootNaturalDelta -50, -50, 0");
-  lLB.SetFootNaturalDelta(-50.0, -50.0, -30.0, T);
+  P("4 - SetFootNatural -50, -50, 0");
+  lLB.SetFootNatural(-50.0, -50.0, -30.0, T);
   NL();
   delay(D);
   
-  P("SetFootNaturalDelta 0, 0, 0");
-  lLB.SetFootNaturalDelta(0.0, 0.0, 0.0, T);
+  P("SetFootNatural 0, 0, 0");
+  lLB.SetFootNatural(0.0, 0.0, 0.0, T);
   NL();
   delay(BLD);
 }
@@ -225,51 +229,51 @@ NL();
 // *Out, *up, CW.
 void SetRobotPositionE(int Time)
 {
-  sLFK.PositionAngle(30.0, 1000);
-  sLMK.PositionAngle(30.0, 1000);
-  sLBK.PositionAngle(30.0, 1000);
-  sRFK.PositionAngle(30.0, 1000);
-  sRMK.PositionAngle(30.0, 1000);
-  sRBK.PositionAngle(30.0, 1000);
+  sLFK.SetAngle(30.0, 1000);
+  sLMK.SetAngle(30.0, 1000);
+  sLBK.SetAngle(30.0, 1000);
+  sRFK.SetAngle(30.0, 1000);
+  sRMK.SetAngle(30.0, 1000);
+  sRBK.SetAngle(30.0, 1000);
 
-  sLFV.PositionAngle(30.0, 1000);
-  sLMV.PositionAngle(30.0, 1000);
-  sLBV.PositionAngle(30.0, 1000);
-  sRFV.PositionAngle(30.0, 1000);
-  sRMV.PositionAngle(30.0, 1000);
-  sRBV.PositionAngle(30.0, 1000);
+  sLFV.SetAngle(30.0, 1000);
+  sLMV.SetAngle(30.0, 1000);
+  sLBV.SetAngle(30.0, 1000);
+  sRFV.SetAngle(30.0, 1000);
+  sRMV.SetAngle(30.0, 1000);
+  sRBV.SetAngle(30.0, 1000);
 
-  sLFH.PositionAngle(10.0, 1000);
-  sLMH.PositionAngle(10.0, 1000);
-  sLBH.PositionAngle(10.0, 1000);
-  sRFH.PositionAngle(10.0, 1000);
-  sRMH.PositionAngle(10.0, 1000);
-  sRBH.PositionAngle(10.0, 1000);
+  sLFH.SetAngle(10.0, 1000);
+  sLMH.SetAngle(10.0, 1000);
+  sLBH.SetAngle(10.0, 1000);
+  sRFH.SetAngle(10.0, 1000);
+  sRMH.SetAngle(10.0, 1000);
+  sRBH.SetAngle(10.0, 1000);
 }
 
 // *In, *down, CCW
 void SetRobotPositionF(int Time)
 {
-  sLFK.PositionAngle(-30.0, 1000);
-  sLMK.PositionAngle(-30.0, 1000);
-  sLBK.PositionAngle(-30.0, 1000);
-  sRFK.PositionAngle(-30.0, 1000);
-  sRMK.PositionAngle(-30.0, 1000);
-  sRBK.PositionAngle(-30.0, 1000);
+  sLFK.SetAngle(-30.0, 1000);
+  sLMK.SetAngle(-30.0, 1000);
+  sLBK.SetAngle(-30.0, 1000);
+  sRFK.SetAngle(-30.0, 1000);
+  sRMK.SetAngle(-30.0, 1000);
+  sRBK.SetAngle(-30.0, 1000);
 
-  sLFV.PositionAngle(-20.0, 1000);
-  sLMV.PositionAngle(-20.0, 1000);
-  sLBV.PositionAngle(-20.0, 1000);
-  sRFV.PositionAngle(-20.0, 1000);
-  sRMV.PositionAngle(-20.0, 1000);
-  sRBV.PositionAngle(-20.0, 1000);
+  sLFV.SetAngle(-20.0, 1000);
+  sLMV.SetAngle(-20.0, 1000);
+  sLBV.SetAngle(-20.0, 1000);
+  sRFV.SetAngle(-20.0, 1000);
+  sRMV.SetAngle(-20.0, 1000);
+  sRBV.SetAngle(-20.0, 1000);
 
-  sLFH.PositionAngle(-10.0, 1000);
-  sLMH.PositionAngle(-10.0, 1000);
-  sLBH.PositionAngle(-10.0, 1000);
-  sRFH.PositionAngle(-10.0, 1000);
-  sRMH.PositionAngle(-10.0, 1000);
-  sRBH.PositionAngle(-10.0, 1000);
+  sLFH.SetAngle(-10.0, 1000);
+  sLMH.SetAngle(-10.0, 1000);
+  sLBH.SetAngle(-10.0, 1000);
+  sRFH.SetAngle(-10.0, 1000);
+  sRMH.SetAngle(-10.0, 1000);
+  sRBH.SetAngle(-10.0, 1000);
 }
 
 
@@ -277,14 +281,14 @@ void SetRobotPositionF(int Time)
 void SetRobotPositionG(int Time)
 {
   // Right
-  lRF.SetFootNaturalDelta(40.0, 40.0, 0.0, Time);  // A
-  lRM.SetFootNaturalDelta(60.0, 0.0, 0.0, Time);
-  lRB.SetFootNaturalDelta(40.0, -40.0, 0.0, Time);  // A
+  lRF.SetFootNatural(40.0, 40.0, 0.0, Time);  // A
+  lRM.SetFootNatural(60.0, 0.0, 0.0, Time);
+  lRB.SetFootNatural(40.0, -40.0, 0.0, Time);  // A
 
   // Left
-  lLF.SetFootNaturalDelta(-40.0, 40.0, 0.0, Time);
-  lLM.SetFootNaturalDelta(-60.0, 0.0, 0.0, Time);  // A
-  lLB.SetFootNaturalDelta(-40.0, -40.0, 0.0, Time);
+  lLF.SetFootNatural(-40.0, 40.0, 0.0, Time);
+  lLM.SetFootNatural(-60.0, 0.0, 0.0, Time);  // A
+  lLB.SetFootNatural(-40.0, -40.0, 0.0, Time);
 }
 
 
@@ -292,12 +296,14 @@ void SetRobotPositionG(int Time)
 void SetRobotPositionH(int Time)
 {
   // Right
-  lRF.SetFootNaturalDelta(-40.0, -40.0, 0.0, Time);  // A
-  lRM.SetFootNaturalDelta(-60.0, 0.0, 0.0, Time);
-  lRB.SetFootNaturalDelta(-40.0, 40.0, 0.0, Time);  // A
+  lRF.SetFootNatural(-40.0, -40.0, 0.0, Time);  // A
+  lRM.SetFootNatural(-60.0, 0.0, 0.0, Time);
+  lRB.SetFootNatural(-40.0, 40.0, 0.0, Time);  // A
 
   // Left
-  lLF.SetFootNaturalDelta(40.0, -40.0, 0.0, Time);
-  lLM.SetFootNaturalDelta(60.0, 0.0, 0.0, Time);  // A
-  lLB.SetFootNaturalDelta(40.0, 40.0, 0.0, Time);
+  lLF.SetFootNatural(40.0, -40.0, 0.0, Time);
+  lLM.SetFootNatural(60.0, 0.0, 0.0, Time);  // A
+  lLB.SetFootNatural(40.0, 40.0, 0.0, Time);
 }
+
+// END

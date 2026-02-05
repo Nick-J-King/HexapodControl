@@ -36,17 +36,22 @@ Servo sLBV(LBV, 1000, 2000, 1488);  //1526);
 Servo sLBH(LBH, 1000, 2000, 1406);  //1379);
 
 
-float RX = XPOS + 80.25;
-float RMX = XPOSM + 113.5;
-float LX = -XPOS - 80.25;
-float LMX = -XPOSM - 113.5;
-float FY = YPOS + 80.25;
-float MY = 0.0;
-float BY = -YPOS - 80.25;
-float Z = TIBIALENGTH;
+// 113.5 is HIPWIDTH + FEMURLENGTH
+#define DO 113.5
 
-// >>> USE ALL CONSTANTS, AND MAKE BETTER NAMES
+// 80.25 is the width / height of square when that is the diagonal
+#define DO2 80.25
 
+#define RX (XPOS + DO2)
+#define RMX (XPOSM + DO)
+#define LX (-XPOS - DO2)
+#define LMX (-XPOSM - DO)
+#define FY (YPOS + DO2)
+#define MY 0.0
+#define BY (-YPOS - DO2)
+#define Z TIBIALENGTH
+
+// Give the leg the postion in frame, the servos, the natural angle of leg, and natural position of the feet.
 Leg lRF(XPOS, YPOS, &sRFK, &sRFV, &sRFH, 45.0, RX, FY, Z);
 Leg lRM(XPOSM, 0, &sRMK, &sRMV, &sRMH, 90.0, RMX, MY, Z);
 Leg lRB(XPOS, -YPOS, &sRBK, &sRBV, &sRBH, 135.0, RX, BY, Z);
@@ -56,23 +61,15 @@ Leg lLM(-XPOSM, 0, &sLMK, &sLMV, &sLMH, -90.0, LMX, MY, Z);
 Leg lLF(-XPOS, YPOS, &sLFK, &sLFV, &sLFH, -45.0, LX, FY, Z);
 
 
-void CenterAllPWM(int Time)
+void NaturalAll(int Time)
 {
-  lLF.CenterPWM(Time);
-  lLM.CenterPWM(Time);
-  lLB.CenterPWM(Time);
-  lRF.CenterPWM(Time);
-  lRM.CenterPWM(Time);
-  lRB.CenterPWM(Time);
+  lLF.SetNatural(Time);
+  lLM.SetNatural(Time);
+  lLB.SetNatural(Time);
+  lRF.SetNatural(Time);
+  lRM.SetNatural(Time);
+  lRB.SetNatural(Time);
 }
 
 
-void NaturalAllPWM(int Time)
-{
-  lLF.NaturalPWM(Time);
-  lLM.NaturalPWM(Time);
-  lLB.NaturalPWM(Time);
-  lRF.NaturalPWM(Time);
-  lRM.NaturalPWM(Time);
-  lRB.NaturalPWM(Time);
-}
+// END

@@ -1,13 +1,16 @@
 #ifndef Leg_h
 #define Leg_h
 
+#include "Servo.h"
+
+
 //>>>> SOMEHOW, add proper interpolation.
 // A single leg of the Hexapod robot.
 
 class Leg
 {
-  public:
-
+  private:
+  
     Servo *_Knee;
     Servo *_Vertical;
     Servo *_Horizontal;
@@ -24,16 +27,20 @@ class Leg
     float _FootYCurrent;
     float _FootZCurrent;
 
+    bool _FootPositionValid;
+
+  public:
+    
     Leg(float xPos, float yPos, Servo *Knee, Servo *Vertical, Servo *Horizontal, float Angle, float FootX, float FootY, float FootZ);
 
-    void SetFootPosition(float x, float y, float z, int Time);
-    void SetFootNatural(int Time);
-    void SetFootNaturalDelta(float x, float y, float z, int Time);
+    void SetNatural(int Time);
 
-    //>>> Add function to set all servos in one go.
+    void InvalidateFootPosition() { _FootPositionValid = false; }
     
-    void CenterPWM(int Time);   // Centre all servos in the leg (ABSOLUTE_MIDDLE).
-    void NaturalPWM(int Time);  // Centre of the servos to "natural" rest position.
+    void SetFootNatural(float x, float y, float z, int Time);   // Relative to natural foot position.
+    void SetFootPosition(float x, float y, float z, int Time);  // Relative to central coordinates.
 };
 
 #endif
+
+// END

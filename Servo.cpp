@@ -12,11 +12,12 @@ Servo::Servo(int Pin, int Min, int Max, int Natural)
   _Natural = Natural;   // PWM in "natural" position.
 
   _CurrentPWM = 0;
+  _CurrentAngle = UNKNOWN_ANGLE;
 }
 
 
 // Set angle according to IK.
-void Servo::PositionAngle(float angle, int Time)
+void Servo::SetAngle(float angle, int Time)
 {
   int pos;
   if (_Min < _Max)
@@ -28,13 +29,16 @@ void Servo::PositionAngle(float angle, int Time)
     pos = _Natural - angle * PWMPERDEGREE;
   }
   
-  PositionPWM(pos, Time);
+  SetPWM(pos, Time);
+
+  _CurrentAngle = angle;
+  _leg->InvalidateFootPosition();
 }
 
 
 // >>> Clamp against ABSOLUTEMIN and ABSOLUTEMAX too.
 
-void Servo::PositionPWM(int Pos, int Time)
+void Servo::SetPWM(int Pos, int Time)
 {
   if (_CurrentPWM == Pos)
     return;
@@ -53,18 +57,6 @@ void Servo::PositionPWM(int Pos, int Time)
   Serial.println(sBuffer);
 
   _CurrentPWM = Pos;
-}
-
-
-void Servo::CenterPWM(int Time)
-{
-  PositionPWM(ABSOLUTE_MIDDLE, Time);
-}
-
-
-void Servo::NaturalPWM(int Time)
-{
-  PositionPWM(_Natural, Time);
 }
 
 
