@@ -64,7 +64,31 @@ float GetAngleFromCosineLaw(float opp, float adj1, float adj2)
 // Forward kinematics to determine foot position from given servo angles.
 void ComputeFootPosition(float hipNatural, float hipX, float hipY, float kneeAngle, float verticalAngle, float hipAngle, float *xOut, float *yOut, float *zOut)
 {
+  // Start in "hip coords"
+  float xKnee = FEMURLENGTH * cos(deg2rad(verticalAngle)) + HIPWIDTH;
+  float zKnee = FEMURLENGTH * -sin(deg2rad(verticalAngle));
+NL();
+PFV("xKnee", xKnee);
+PFV("zKnee", zKnee);
+
+  float kneeAngleAdjusted = verticalAngle + kneeAngle;
+PFV("kneeAngleAdjusted", kneeAngleAdjusted);
+   
+  float xFoot = TIBIALENGTH * sin(deg2rad(kneeAngleAdjusted)) + xKnee;
+  float zFoot = TIBIALENGTH * cos(deg2rad(kneeAngleAdjusted)) + zKnee;
+
+  float hipAngleAdjusted = hipNatural - hipAngle;
+
+  // Here, "distanceOut" is just the xFoot.
+  // At the moment, yFoot is 0.
   
+  // Now rotate and translate according to hip
+  float xFootNew = xFoot * cos(deg2rad(hipAngleAdjusted));
+  float yFootNew = xFoot * sin(deg2rad(hipAngleAdjusted));
+
+  *xOut = xFootNew + hipX;
+  *yOut = yFootNew + hipY;
+  *zOut = zFoot;
 }
 
 
@@ -125,4 +149,50 @@ void PFV(char *Name, float var)
 
   sprintf(sBuffer, "%s = %s", Name, sVar);
   Serial.println(sBuffer);
+}
+
+
+void WaitForServos()
+{
+  String s;
+  
+  do
+  {
+    Serial.println("Q");
+    s = ReadSerial();
+    if (s == ".")
+    {
+      return;
+    }
+    delay(100);
+  } while (true);
+}
+
+String ReadSerial()
+{
+  String readString;
+  String Q;
+
+  // Wait for text...
+  while (!Serial.available()) {
+    delay(1);
+  }
+  
+  while (Serial.available())
+  {
+    delay(1);
+ 
+    if (Serial.available() > 0)
+    {
+      char c = Serial.read();  //gets one byte from serial buffer
+      if (isControl(c))
+      {
+        //'Serial.println("it's a control character");
+        break;
+      }
+      readString += c; //makes the string readString    
+    }
+  }
+  
+  return readString;
 }

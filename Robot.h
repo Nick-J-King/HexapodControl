@@ -5,6 +5,7 @@
 
 #include "Tests.h"
 #include "Utils.h"
+#include "WakeUp.h"
 
 // >>> MAKE THIS A CLASS
 

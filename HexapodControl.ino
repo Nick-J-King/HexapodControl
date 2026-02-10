@@ -9,40 +9,47 @@ void setup()
 {
   Serial.begin(115200);
   delay(1000);
+/*
+  Serial.println("VER");
+  String s = ReadSerial();
+  Serial.println(":"+ s + ":");
 
-  SetRobotPosition0(0);     // Start in "natural" pose.
   delay(1000);
+*/    
+  WakeUp();
 
+  SetRobotPosition0(1000);     // Start in "natural" pose.
+  WaitForServos();
+  
   SetRobotPosition1(1000);  // Start to move by lifting tripod A in neutral position
-  delay(2000);
-
-  //NaturalAllPWM(1000);
-  //CenterAllPWM(0);
-  //delay(1000);
+  WaitForServos();
 }
 
 
-#define T1 100
-#define D1 150
-#define T2 400
-#define D2 450
+#define T1 150  // QUICK motion
+#define T2 500  // Slower motion.
+
 
 void loop()
 {
   // Walking loop
   SetRobotPosition2(T2);
-  delay(D2);
+  WaitForServos();
+
   SetRobotPosition3(T1);
-  delay(D1);
+  WaitForServos();
+
   SetRobotPosition4(T1);
-  delay(D1);
+  WaitForServos();
 
   SetRobotPosition5(T2);
-  delay(D2);
+  WaitForServos();
+
   SetRobotPosition6(T1);
-  delay(D1);
+  WaitForServos();
+
   SetRobotPosition7(T1);
-  delay(D1);
+  WaitForServos();
 }
 
 

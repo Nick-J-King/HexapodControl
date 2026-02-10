@@ -3,6 +3,8 @@
 #ifndef Utils_h
 #define Utils_h
 
+#include <Arduino.h>
+
 
 #define TWO_PI 6.283185307179586476925286766559
 #define DEG_TO_RAD 0.017453292519943295769236907684886
@@ -19,11 +21,18 @@ void SerialWrite();
 int Clamp(int val, int Min, int Max);
 float GetAngleFromCosineLaw(float opp, float adj1, float adj2);
 
+void ComputeFootPosition(float hipNatural, float hipX, float hipY, float kneeAngle, float verticalAngle, float hipAngle, float *xOut, float *yOut, float *zOut);
+
 void ComputeAngles(float x, float y, float z, float hipNatural, float hipX, float hipY, float *kneeAngleOut, float *verticalAngleOut, float *hipAngleOut);
+
 void NormalisePosition(float x, float y, float z, float hipNatural, float hipX, float hipY, float *xOut, float *yOut);
 
 void P(char *s);
 void NL();
 void PFV(char *Name, float var);
+
+
+void WaitForServos();
+String ReadSerial();
 
 #endif

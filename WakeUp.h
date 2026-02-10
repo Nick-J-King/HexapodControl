@@ -1,1 +1,3 @@
 // WakeUp.h
+
+void WakeUp();

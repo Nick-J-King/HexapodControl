@@ -33,6 +33,10 @@ class Leg
     
     Leg(float xPos, float yPos, Servo *Knee, Servo *Vertical, Servo *Horizontal, float Angle, float FootX, float FootY, float FootZ);
 
+    Servo *Knee() { return _Knee; }
+    Servo *Vertical() { return _Vertical; }
+    Servo *Horizontal() { return _Horizontal; }
+    
     void SetNatural(int Time);
 
     void InvalidateFootPosition() { _FootPositionValid = false; }
