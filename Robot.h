@@ -6,6 +6,7 @@
 #include "Tests.h"
 #include "Utils.h"
 #include "WakeUp.h"
+#include "Walk.h"
 
 // >>> MAKE THIS A CLASS
 
