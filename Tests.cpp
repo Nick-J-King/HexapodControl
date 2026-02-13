@@ -1,9 +1,8 @@
-#include "Flags.h"
+// Tests.cpp
+
+#include "Tests.h"
 
 #ifdef DEBUG
-
-#include <Arduino.h>
-#include "Tests.h"
 
 
 // Test kinematics of right front leg.

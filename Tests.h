@@ -1,17 +1,12 @@
-#include "Flags.h"
-
-#ifdef DEBUG
-#ifndef Tests_h
-
-#define Tests_h
+// Tests.h
 
 #include "Robot.h"
 
+#ifdef DEBUG
 
 void TestKinematics();
 
-
-#endif // Tests_h
 #endif // DEBUG
+
 
 // END //

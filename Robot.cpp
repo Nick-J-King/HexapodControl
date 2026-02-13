@@ -74,6 +74,7 @@ void NaturalAll(int Time)
 
 #ifdef DEBUG
 
+
 void ReportRobot()
 {
   P("\nReport Robot status");
@@ -86,6 +87,8 @@ void ReportRobot()
 //  lRB.ReportLeg("Right Back");
 }
 
+
 #endif // DEBUG
+
 
 // END //

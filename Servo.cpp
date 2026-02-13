@@ -1,8 +1,7 @@
+// Servo.cpp
+//
 // Controls individual servos.
 
-#ifdef DEBUG
-#include <Arduino.h>
-#endif // DEBUG
 
 #include "Robot.h"
 

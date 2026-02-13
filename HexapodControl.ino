@@ -6,7 +6,6 @@
 
 #ifdef DEBUG
 #include "Debug.h"
-#include "Tests.h"
 #endif // DEBUG
 
 #ifdef EXERCISE
