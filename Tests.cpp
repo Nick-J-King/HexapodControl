@@ -1,3 +1,5 @@
+#include "Flags.h"
+
 #ifdef DEBUG
 
 #include <Arduino.h>

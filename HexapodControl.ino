@@ -2,12 +2,6 @@
 //
 // Written by NJK, 2026
 
-// Define ONE of these flags
-#define DEBUG // Flag for debug mode
-//#define EXERCISE
-//#define NORMAL
-
-
 #include "Robot.h"
 
 #ifdef DEBUG
@@ -39,11 +33,15 @@ void setup()
 
   RunDebugChecks();
 
-#elif EXERCISE
+#endif
+
+#ifdef EXERCISE
 
   ExerciseRobot();
 
-#elif NORMAL // "Normal" mode with commands from IR
+#endif
+
+#ifdef NORMAL // "Normal" mode with commands from IR
 
   WakeUp();
 
@@ -56,7 +54,7 @@ void setup()
   // Enables the interrupt generation on change of IR input signal
   initPCIInterruptForTinyReceiver();
 
-#endif
+#endif // NORMAL
 }
 
 

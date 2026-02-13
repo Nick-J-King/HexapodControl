@@ -1,5 +1,9 @@
 #include "Robot.h"
 
+#ifdef EXERCISE
+
+#include "Exercises.h"
+
 
 //>>> Add exercise to move body up and down...
 
@@ -220,6 +224,9 @@ void SetRobotPositionH(int Time)
   lLM.SetFootNatural(60.0, 0.0, 0.0, Time);  // A
   lLB.SetFootNatural(40.0, 40.0, 0.0, Time);
 }
+
+
+#endif // EXERCISE
 
 
 // END //

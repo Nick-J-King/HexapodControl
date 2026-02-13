@@ -1,5 +1,6 @@
 // Main Robot stuff.
 
+#include "Flags.h"
 #include "Servo.h"
 #include "Leg.h"
 #include "Utils.h"

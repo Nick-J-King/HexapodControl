@@ -46,23 +46,28 @@ class Leg
 
     void SetFootDelta(float x, float y, float z, int Time);     // Relative to current foot position.
 
+#ifdef DEBUG
+
     void ReportLeg(String Name)
     {
-      //if (_FootPositionValid)
+      if (_FootPositionValid)
       {
         P(" " + Name + " foot at current position Central:(" + String(_FootXCurrent) + ", " + String(_FootYCurrent) + ", " + String(_FootZCurrent) + ")  Natural:(" + String(_FootXCurrent - _FootXNatural) + ", " + String(_FootYCurrent - _FootYNatural) + ", " + String(_FootZCurrent - _FootZNatural) + ")");
       }
-      //else
-      //{
-      //  P(" " + Name + " foot coords are invalid");
-      //}
+      else
+      {
+        P(" " + Name + " foot coords are invalid");
+      }
 
       _Knee->ReportServo(Name + " Knee");
       _Vertical->ReportServo(Name + " Vertical");
       _Horizontal->ReportServo(Name + " Horizontal");
     }
+
+#endif DEBUG
+
 };
 
-#endif
+#endif // Leg_h
 
 // END

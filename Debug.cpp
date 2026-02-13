@@ -1,8 +1,11 @@
-#ifdef DEBUG
-
+// Debug.cpp
 
 #include "Robot.h"
+
+#ifdef DEBUG
+
 #include "Debug.h"
+#include "Tests.h"
 
 
 // Run debug checks from setup(), if in DEBUG mode.
