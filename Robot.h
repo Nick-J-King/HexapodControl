@@ -10,6 +10,8 @@
 
 // >>> MAKE THIS A CLASS
 
+#define DEBUG 1
+
 
 #define UNKNOWN_ANGLE -1000
 #define UNKNOWN_POSITION -1000
@@ -98,5 +100,7 @@ extern Leg lRB;
 extern Leg lLB;
 extern Leg lLM;
 
+void NaturalAll(int Time);
+void ReportRobot();
 
-// END
+// END //

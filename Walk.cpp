@@ -152,3 +152,5 @@ void SetRobotPosition7(int Time)
   lLM.SetFootNatural(0.0, -S, Z1, Time); // A
   lLB.SetFootNatural(0.0, S, Z0, Time);
 }
+
+// END //

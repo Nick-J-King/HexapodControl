@@ -72,4 +72,16 @@ void NaturalAll(int Time)
 }
 
 
+void ReportRobot()
+{
+  P("\nReport Robot status");
+
+//  lLF.ReportLeg("Left Front");
+//  lLM.ReportLeg("Left Middle");
+//  lLB.ReportLeg("Left Back");
+  lRF.ReportLeg("Right Front");
+//  lRM.ReportLeg("Right Middle");
+//  lRB.ReportLeg("Right Back");
+}
+
 // END

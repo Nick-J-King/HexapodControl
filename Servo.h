@@ -1,6 +1,10 @@
 #ifndef Servo_h
 #define Servo_h
 
+
+#include <Arduino.h>
+#include "Utils.h"
+
 class Leg;
 
 
@@ -11,12 +15,12 @@ class Servo
     int _Pin;
     int _Min;
     int _Max;
-    int _Natural;   // PMW at zero degrees.
+    int _Natural;   // PWM value at zero degrees.
 
     Leg *_leg;
 
     int _CurrentPWM;
-    int _CurrentAngle;
+    float _CurrentAngle;
 
     void SetPWM(int Pos, int Time);   // Set Position by PWM (us) and Time (ms).
 
@@ -27,7 +31,10 @@ class Servo
     
     void SetAngle(float angle, int Time);
     
-    int CurrentAngle();
+    int GetAngle() {return _CurrentAngle; }  // <<< Assume current angle is valid for now...
+
+    // Debug FN
+    void ReportServo(String Name) { P("  " + Name + " servo at angle " + String(_CurrentAngle) + " degrees"); }
 };
 
 

@@ -4,8 +4,6 @@
 #include "Robot.h"
 
 
-void ExerciseLeg(Leg *leg);
-void ExerciseAllLegs();
 void TestKinematics();
 
 

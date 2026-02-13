@@ -63,7 +63,6 @@ void Leg::SetFootPosition(float x, float y, float z, int Time)
   float verticalAngle;
   float hipAngle;
   
-  // This should be the "natural" front right leg.
   ComputeAngles(x, y, z, _Angle, _xPos, _yPos, &kneeAngle, &verticalAngle, &hipAngle);
 
   //>>> Use function to set all the servos at once...
@@ -77,5 +76,16 @@ void Leg::SetFootPosition(float x, float y, float z, int Time)
 
   _FootPositionValid = true;
 }
+
+
+void Leg::SetFootDelta(float x, float y, float z, int Time)
+{
+  if (!_FootPositionValid)
+  {
+    ComputeFootPosition(_Angle, _xPos, _yPos, _Knee->GetAngle(), _Vertical->GetAngle(), _Horizontal->GetAngle(), &_FootXCurrent, &_FootYCurrent, &_FootZCurrent);
+  }
+  SetFootPosition(_FootXCurrent + x, _FootYCurrent + y, _FootZCurrent + z, Time);
+}
+
 
 // END

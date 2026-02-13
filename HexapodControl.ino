@@ -16,7 +16,22 @@ void setup()
 {
   Serial.begin(115200);
   delay(1000);
-   
+  
+  ///////////////////
+  P("\nSet natural position");
+  SetRobotPosition0(0);     // Start in "natural" pose...
+  ReportRobot();
+  delay(1000);
+
+  //TestKinematics();
+
+  P("\nSet right front foot delta 10,20,30");
+  lRF.SetFootDelta(10.0, 20.0, 30.0, 0);
+  ReportRobot();
+
+  ///////////////////
+
+/*
   WakeUp();
 
   SetRobotPosition0(1000);     // Start in "natural" pose.
@@ -27,6 +42,7 @@ void setup()
 
   // Enables the interrupt generation on change of IR input signal
   initPCIInterruptForTinyReceiver();
+*/
 }
 
 
@@ -34,10 +50,12 @@ volatile int state = 1;
 
 void loop()
 {
+  /*
   if (state == 1)
   {
     WalkLoop();
   }
+  */
 }
 
 

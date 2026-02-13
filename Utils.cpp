@@ -44,7 +44,7 @@ int Clamp(int val, int Min, int Max)
 }
 
 
-// >>> ALERT IF TRIANGE CANNOT BE FORMED.
+// >>> ALERT IF TRIANGLE CANNOT BE FORMED.
 float GetAngleFromCosineLaw(float opp, float adj1, float adj2)
 {
   return rad2deg(acos((adj1 * adj1 + adj2 * adj2 - opp * opp) / (2 * adj1 * adj2)));
@@ -61,18 +61,14 @@ float GetAngleFromCosineLaw(float opp, float adj1, float adj2)
 //  y forward
 //  z down
 
-// Forward kinematics to determine foot position from given servo angles.
+// Forward kinematics to determine foot position in central coordinates from given servo angles.
 void ComputeFootPosition(float hipNatural, float hipX, float hipY, float kneeAngle, float verticalAngle, float hipAngle, float *xOut, float *yOut, float *zOut)
 {
   // Start in "hip coords"
   float xKnee = FEMURLENGTH * cos(deg2rad(verticalAngle)) + HIPWIDTH;
   float zKnee = FEMURLENGTH * -sin(deg2rad(verticalAngle));
-NL();
-PFV("xKnee", xKnee);
-PFV("zKnee", zKnee);
 
   float kneeAngleAdjusted = verticalAngle + kneeAngle;
-PFV("kneeAngleAdjusted", kneeAngleAdjusted);
    
   float xFoot = TIBIALENGTH * sin(deg2rad(kneeAngleAdjusted)) + xKnee;
   float zFoot = TIBIALENGTH * cos(deg2rad(kneeAngleAdjusted)) + zKnee;
@@ -130,7 +126,7 @@ void NormalisePosition(float x, float y, float z, float hipNatural, float hipX, 
 }
 
 
-void P(char *s)
+void P(String s)
 {
   Serial.println(s);
 }
@@ -141,13 +137,13 @@ void NL()
   Serial.println("");
 }
 
-void PFV(char *Name, float var)
+void PFV(String Name, float var)
 {
   char sBuffer[150];
   char sVar[16];
   dtostrf(var, 4, 2, sVar);
 
-  sprintf(sBuffer, "%s = %s", Name, sVar);
+  sprintf(sBuffer, "%s = %s", Name.c_str(), sVar);
   Serial.println(sBuffer);
 }
 
@@ -187,7 +183,6 @@ String ReadSerial()
       char c = Serial.read();  //gets one byte from serial buffer
       if (isControl(c))
       {
-        //'Serial.println("it's a control character");
         break;
       }
       readString += c; //makes the string readString    
@@ -196,3 +191,5 @@ String ReadSerial()
   
   return readString;
 }
+
+ // END //

@@ -27,9 +27,9 @@ void ComputeAngles(float x, float y, float z, float hipNatural, float hipX, floa
 
 void NormalisePosition(float x, float y, float z, float hipNatural, float hipX, float hipY, float *xOut, float *yOut);
 
-void P(char *s);
+void P(String s);
 void NL();
-void PFV(char *Name, float var);
+void PFV(String Name, float var);
 
 
 void WaitForServos();
