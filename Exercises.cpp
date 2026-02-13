@@ -3,6 +3,12 @@
 
 //>>> Add exercise to move body up and down...
 
+void ExerciseRobot()
+{
+  CycleLegs();
+}
+
+
 #define T 200
 #define D 1000
 #define BLD 2000
@@ -10,216 +16,126 @@
 
 void CycleLegs()
 {
-P("Right front foot test");
-NL();
-
   // RF test
-  P("SetFootNatural 0, 0, 0");
   lRF.SetFootNatural(0.0, 0.0, 0.0, T);
-  NL();
   delay(D);
   
-  P("1 - SetFootNatural -50, 50, 0");
   lRF.SetFootNatural(-50.0, 50.0, -30.0, T);
-  NL();
   delay(D);
   
-  P("2 - SetFootNatural 50, 50, 0");
   lRF.SetFootNatural(50.0, 50.0, -30.0, T);
-  NL();
   delay(D);
 
-  P("3 - SetFootNatural 50, -50, 0");
   lRF.SetFootNatural(50.0, -50.0, -30.0, T);
-  NL();
   delay(D);
   
-  P("4 - SetFootNatural -50, -50, 0");
   lRF.SetFootNatural(-50.0, -50.0, -30.0, T);
-  NL();
   delay(D);
 
-  P("SetFootNatural 0, 0, 0");
   lRF.SetFootNatural(0.0, 0.0, 0.0, T);
-  NL();
   delay(BLD);
 
-
-  P("Right middle foot test");
-NL();
 
   // RM test
-  P("SetFootNatural 0, 0, 0");
   lRM.SetFootNatural(0.0, 0.0, 0.0, T);
-  NL();
   delay(D);
   
-  P("1 - SetFootNatural -50, 50, 0");
   lRM.SetFootNatural(-50.0, 50.0, -30.0, T);
-  NL();
   delay(D);
   
-  P("2 - SetFootNatural 50, 50, 0");
   lRM.SetFootNatural(50.0, 50.0, -30.0, T);
-  NL();
   delay(D);
 
-  P("3 - SetFootNatural 50, -50, 0");
   lRM.SetFootNatural(50.0, -50.0, -30.0, T);
-  NL();
   delay(D);
   
-  P("4 - SetFootNatural -50, -50, 0");
   lRM.SetFootNatural(-50.0, -50.0, -30.0, T);
-  NL();
   delay(D);
   
-  P("SetFootNatural 0, 0, 0");
   lRM.SetFootNatural(0.0, 0.0, 0.0, T);
-  NL();
   
   delay(BLD);
 
 
-    P("Right back foot test");
-NL();
-
   // RB test
-  P("SetFootNatural 0, 0, 0");
   lRB.SetFootNatural(0.0, 0.0, 0.0, T);
-  NL();
   delay(D);
   
-  P("1 - SetFootNatural -50, 50, 0");
   lRB.SetFootNatural(-50.0, 50.0, -30.0, T);
-  NL();
   delay(D);
   
-  P("2 - SetFootNatural 50, 50, 0");
   lRB.SetFootNatural(50.0, 50.0, -30.0, T);
-  NL();
   delay(D);
 
-  P("3 - SetFootNatural 50, -50, 0");
   lRB.SetFootNatural(50.0, -50.0, -30.0, T);
-  NL();
   delay(D);
   
-  P("4 - SetFootNatural -50, -50, 0");
   lRB.SetFootNatural(-50.0, -50.0, -30.0, T);
-  NL();
   delay(D);
   
-  P("SetFootNatural 0, 0, 0");
   lRB.SetFootNatural(0.0, 0.0, 0.0, T);
-  NL();
   delay(BLD);
 
 ////////////////
 
-P("Left front foot test");
-NL();
-
   // LF test
-  P("SetFootNatural 0, 0, 0");
   lLF.SetFootNatural(0.0, 0.0, 0.0, T);
-  NL();
   delay(D);
   
-  P("1 - SetFootNatural -50, 50, 0");
   lLF.SetFootNatural(-50.0, 50.0, -30.0, T);
-  NL();
   delay(D);
   
-  P("2 - SetFootNatural 50, 50, 0");
   lLF.SetFootNatural(50.0, 50.0, -30.0, T);
-  NL();
   delay(D);
 
-  P("3 - SetFootNatural 50, -50, 0");
   lLF.SetFootNatural(50.0, -50.0, -30.0, T);
-  NL();
   delay(D);
   
-  P("4 - SetFootNatural -50, -50, 0");
   lLF.SetFootNatural(-50.0, -50.0, -30.0, T);
-  NL();
   delay(D);
 
-  P("SetFootNatural 0, 0, 0");
   lLF.SetFootNatural(0.0, 0.0, 0.0, T);
-  NL();
   delay(BLD);
 
-
-  P("Left middle foot test");
-NL();
 
   // RM test
-  P("SetFootNatural 0, 0, 0");
   lLM.SetFootNatural(0.0, 0.0, 0.0, T);
-  NL();
   delay(D);
   
-  P("1 - SetFootNatural -50, 50, 0");
   lLM.SetFootNatural(-50.0, 50.0, -30.0, T);
-  NL();
   delay(D);
   
-  P("2 - SetFootNatural 50, 50, 0");
   lLM.SetFootNatural(50.0, 50.0, -30.0, T);
-  NL();
   delay(D);
 
-  P("3 - SetFootNatural 50, -50, 0");
   lLM.SetFootNatural(50.0, -50.0, -30.0, T);
-  NL();
   delay(D);
   
-  P("4 - SetFootNatural -50, -50, 0");
   lLM.SetFootNatural(-50.0, -50.0, -30.0, T);
-  NL();
   delay(D);
   
-  P("SetFootNatural 0, 0, 0");
   lLM.SetFootNatural(0.0, 0.0, 0.0, T);
-  NL();
   
   delay(BLD);
 
 
-    P("Left back foot test");
-NL();
-
   // LB test
-  P("SetFootNatural 0, 0, 0");
   lLB.SetFootNatural(0.0, 0.0, 0.0, T);
-  NL();
   delay(D);
   
-  P("1 - SetFootNatural -50, 50, 0");
   lLB.SetFootNatural(-50.0, 50.0, -30.0, T);
-  NL();
   delay(D);
   
-  P("2 - SetFootNatural 50, 50, 0");
   lLB.SetFootNatural(50.0, 50.0, -30.0, T);
-  NL();
   delay(D);
 
-  P("3 - SetFootNatural 50, -50, 0");
   lLB.SetFootNatural(50.0, -50.0, -30.0, T);
-  NL();
   delay(D);
   
-  P("4 - SetFootNatural -50, -50, 0");
   lLB.SetFootNatural(-50.0, -50.0, -30.0, T);
-  NL();
   delay(D);
   
-  P("SetFootNatural 0, 0, 0");
   lLB.SetFootNatural(0.0, 0.0, 0.0, T);
-  NL();
   delay(BLD);
 }
 
@@ -304,5 +220,6 @@ void SetRobotPositionH(int Time)
   lLM.SetFootNatural(60.0, 0.0, 0.0, Time);  // A
   lLB.SetFootNatural(40.0, 40.0, 0.0, Time);
 }
+
 
 // END //

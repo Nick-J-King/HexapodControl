@@ -126,6 +126,8 @@ void NormalisePosition(float x, float y, float z, float hipNatural, float hipX, 
 }
 
 
+#ifdef DEBUG
+
 void P(String s)
 {
   Serial.println(s);
@@ -147,6 +149,8 @@ void PFV(String Name, float var)
   Serial.println(sBuffer);
 }
 
+#endif // DEBUG
+
 
 void WaitForServos()
 {
@@ -163,6 +167,7 @@ void WaitForServos()
     delay(100);
   } while (true);
 }
+
 
 String ReadSerial()
 {
@@ -192,4 +197,6 @@ String ReadSerial()
   return readString;
 }
 
+
  // END //
+ 

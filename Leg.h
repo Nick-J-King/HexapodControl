@@ -48,7 +48,14 @@ class Leg
 
     void ReportLeg(String Name)
     {
-      P(" " + Name + " foot at current position Central:(" + String(_FootXCurrent) + ", " + String(_FootYCurrent) + ", " + String(_FootZCurrent) + ")  Natural:(" + String(_FootXCurrent - _FootXNatural) + ", " + String(_FootYCurrent - _FootYNatural) + ", " + String(_FootZCurrent - _FootZNatural) + ")");
+      //if (_FootPositionValid)
+      {
+        P(" " + Name + " foot at current position Central:(" + String(_FootXCurrent) + ", " + String(_FootYCurrent) + ", " + String(_FootZCurrent) + ")  Natural:(" + String(_FootXCurrent - _FootXNatural) + ", " + String(_FootYCurrent - _FootYNatural) + ", " + String(_FootZCurrent - _FootZNatural) + ")");
+      }
+      //else
+      //{
+      //  P(" " + Name + " foot coords are invalid");
+      //}
 
       _Knee->ReportServo(Name + " Knee");
       _Vertical->ReportServo(Name + " Vertical");

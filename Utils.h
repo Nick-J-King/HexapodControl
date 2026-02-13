@@ -14,11 +14,9 @@
 float deg2rad(float deg);
 float rad2deg(float rad);
 
-
-void SerialWriteLine();
-void SerialWrite();
-
 int Clamp(int val, int Min, int Max);
+
+
 float GetAngleFromCosineLaw(float opp, float adj1, float adj2);
 
 void ComputeFootPosition(float hipNatural, float hipX, float hipY, float kneeAngle, float verticalAngle, float hipAngle, float *xOut, float *yOut, float *zOut);
@@ -27,12 +25,18 @@ void ComputeAngles(float x, float y, float z, float hipNatural, float hipX, floa
 
 void NormalisePosition(float x, float y, float z, float hipNatural, float hipX, float hipY, float *xOut, float *yOut);
 
+
+#ifdef DEBUG
 void P(String s);
 void NL();
 void PFV(String Name, float var);
-
+#endif // DEBUG
 
 void WaitForServos();
 String ReadSerial();
 
-#endif
+
+#endif // Utils_h
+
+
+// END //

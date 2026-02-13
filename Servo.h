@@ -33,9 +33,13 @@ class Servo
     
     int GetAngle() {return _CurrentAngle; }  // <<< Assume current angle is valid for now...
 
-    // Debug FN
+#ifdef DEBUG
     void ReportServo(String Name) { P("  " + Name + " servo at angle " + String(_CurrentAngle) + " degrees"); }
+#endif // DEBUG
 };
 
 
-#endif
+#endif // Servo_h
+
+
+// END //

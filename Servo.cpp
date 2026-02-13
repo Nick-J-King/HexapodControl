@@ -1,6 +1,9 @@
 // Controls individual servos.
 
+#ifdef DEBUG
 #include <Arduino.h>
+#endif // DEBUG
+
 #include "Robot.h"
 
 
@@ -54,10 +57,12 @@ void Servo::SetPWM(int Pos, int Time)
     sprintf(sBuffer, "#%dP%dT%d", _Pin, Clamp(Pos, _Min, _Max), Time);
   }
 
+#ifdef DEBUG
   Serial.println(sBuffer);
+#endif
 
   _CurrentPWM = Pos;
 }
 
 
-// END
+// END //

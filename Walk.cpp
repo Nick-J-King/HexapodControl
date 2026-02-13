@@ -7,6 +7,7 @@
 #define T2 500  // Slower motion.
 
 
+// NOTE: Assume we started in Position0, and already did Position1...
 void WalkLoop()
 {
     // Walking loop
@@ -28,6 +29,7 @@ void WalkLoop()
   SetRobotPosition7(T1);
   WaitForServos();
 }
+
 
 // Natural (resting) pose.
 void SetRobotPosition0(int Time)
@@ -152,5 +154,6 @@ void SetRobotPosition7(int Time)
   lLM.SetFootNatural(0.0, -S, Z1, Time); // A
   lLB.SetFootNatural(0.0, S, Z0, Time);
 }
+
 
 // END //

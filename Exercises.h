@@ -1,5 +1,6 @@
 #include "Robot.h"
 
+void ExerciseRobot();
 
 // >>>> GET THESE FUNCTIONS BACK!
 void ExerciseLeg(Leg *leg);

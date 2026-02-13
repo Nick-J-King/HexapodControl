@@ -1,4 +1,4 @@
-#ifndef Tests_h
+#ifndef DEBUG
 #define Tests_h
 
 #include "Robot.h"
@@ -7,4 +7,7 @@
 void TestKinematics();
 
 
-#endif
+#endif // Tests_h
+#endif // DEBUG
+
+// END //

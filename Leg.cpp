@@ -46,7 +46,7 @@ void Leg::SetNatural(int Time)
 }
 
 
-// Set foot position relative to "natural" foot position.
+// Set foot position relative to "natural" foot position, which is at (0,0,0).
 // This makes keyframing gaits simpler.
 void Leg::SetFootNatural(float x, float y, float z, int Time)
 {

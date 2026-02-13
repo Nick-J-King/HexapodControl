@@ -2,16 +2,12 @@
 
 #include "Servo.h"
 #include "Leg.h"
-
-#include "Tests.h"
 #include "Utils.h"
 #include "WakeUp.h"
 #include "Walk.h"
 
+
 // >>> MAKE THIS A CLASS
-
-#define DEBUG 1
-
 
 #define UNKNOWN_ANGLE -1000
 #define UNKNOWN_POSITION -1000
@@ -67,6 +63,7 @@
 #define FEMURLENGTH 85.5
 #define TIBIALENGTH 125.0
 
+
 extern Servo sRFK;
 extern Servo sRFV;
 extern Servo sRFH;
@@ -100,7 +97,13 @@ extern Leg lRB;
 extern Leg lLB;
 extern Leg lLM;
 
-void NaturalAll(int Time);
+
+void NaturalAll(int Time);  // Set robot to "natural" position.
+
+
+#ifdef DEBUG
 void ReportRobot();
+#endif
+
 
 // END //

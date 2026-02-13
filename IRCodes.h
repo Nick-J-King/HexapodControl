@@ -1,3 +1,5 @@
+// IRCodes.h
+
 
 #define codeUp 0x46
 #define codeDown 0x15
@@ -16,3 +18,6 @@
 #define code0 0x52
 #define codeStar 0x42
 #define codeHash 0x4A
+
+
+// END //

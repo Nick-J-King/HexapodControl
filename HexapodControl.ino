@@ -2,14 +2,32 @@
 //
 // Written by NJK, 2026
 
+// Define ONE of these flags
+#define DEBUG // Flag for debug mode
+//#define EXERCISE
+//#define NORMAL
+
+
 #include "Robot.h"
+
+#ifdef DEBUG
+#include "Debug.h"
+#include "Tests.h"
+#endif // DEBUG
+
+#ifdef EXERCISE
+#include "Exercises.h"
+#endif // EXERCISE
+
+#ifdef NORMAL
 
 //#define DISABLE_PARITY_CHECKS // Disable parity checks. Saves 48 bytes of program memory.
 #define USE_CALLBACK_FOR_TINY_RECEIVER  // Call the user provided function "void handleReceivedTinyIRData()" each time a frame or repeat is received.
 
 #include "TinyIRReceiver.hpp" // include the code
-
 #include "IRCodes.h"
+
+#endif // NORMAL
 
 
 void setup()
@@ -17,21 +35,16 @@ void setup()
   Serial.begin(115200);
   delay(1000);
   
-  ///////////////////
-  P("\nSet natural position");
-  SetRobotPosition0(0);     // Start in "natural" pose...
-  ReportRobot();
-  delay(1000);
+#ifdef DEBUG
 
-  //TestKinematics();
+  RunDebugChecks();
 
-  P("\nSet right front foot delta 10,20,30");
-  lRF.SetFootDelta(10.0, 20.0, 30.0, 0);
-  ReportRobot();
+#elif EXERCISE
 
-  ///////////////////
+  ExerciseRobot();
 
-/*
+#elif NORMAL // "Normal" mode with commands from IR
+
   WakeUp();
 
   SetRobotPosition0(1000);     // Start in "natural" pose.
@@ -42,7 +55,8 @@ void setup()
 
   // Enables the interrupt generation on change of IR input signal
   initPCIInterruptForTinyReceiver();
-*/
+
+#endif
 }
 
 
@@ -50,14 +64,16 @@ volatile int state = 1;
 
 void loop()
 {
-  /*
+#ifdef NORMAL
   if (state == 1)
   {
     WalkLoop();
   }
-  */
+#endif // NORMAL
 }
 
+
+#ifdef NORMAL
 
 volatile uint8_t Command = 0;
 
@@ -81,5 +97,7 @@ void handleReceivedTinyIRData()
   }  
 }
 
+#endif // NORMAL
 
-// END
+
+// END //

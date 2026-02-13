@@ -1,3 +1,5 @@
+#ifdef DEBUG
+
 #include <Arduino.h>
 #include "Tests.h"
 
@@ -42,5 +44,7 @@ void TestKinematics()
   PFV("footZout", footZout);
 }
 
+#endif // DEBUG
 
-// END
+
+// END //
