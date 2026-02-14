@@ -16,13 +16,14 @@ void loop()
 // Run debug checks from setup(), if in DEBUG mode.
 void RunDebugChecks()
 {
+/*
   P("\nSet natural position");
   SetRobotPosition0(0);     // Start in "natural" pose...
   ReportRobot();
   delay(1000);
-
+*/
   TestKinematics();
-
+/*
   P("\nSet right front foot delta 10,20,30");
   lRF.SetFootDelta(10.0, 20.0, 30.0, 0);
   ReportRobot();
@@ -34,6 +35,7 @@ void RunDebugChecks()
   P("\nSet right front foot delta -10,-20,-30");
   lRF.SetFootDelta(-10.0, -20.0, -30.0, 0);
   ReportRobot();
+*/
 }
 
 

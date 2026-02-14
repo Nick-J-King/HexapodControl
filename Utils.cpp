@@ -62,22 +62,22 @@ float GetAngleFromCosineLaw(float opp, float adj1, float adj2)
 void ComputeFootPosition(float hipNatural, float hipX, float hipY, float kneeAngle, float verticalAngle, float hipAngle, float *xOut, float *yOut, float *zOut)
 {
   // Start in "hip coords"
-  float xKnee = FEMURLENGTH * cos(deg2rad(verticalAngle)) + HIPWIDTH;
+  float yKnee = FEMURLENGTH * cos(deg2rad(verticalAngle)) + HIPWIDTH;
   float zKnee = FEMURLENGTH * -sin(deg2rad(verticalAngle));
 
   float kneeAngleAdjusted = verticalAngle + kneeAngle;
    
-  float xFoot = TIBIALENGTH * sin(deg2rad(kneeAngleAdjusted)) + xKnee;
+  float yFoot = TIBIALENGTH * sin(deg2rad(kneeAngleAdjusted)) + yKnee;
   float zFoot = TIBIALENGTH * cos(deg2rad(kneeAngleAdjusted)) + zKnee;
 
-  float hipAngleAdjusted = hipNatural - hipAngle;
+  float hipAngleAdjusted = hipNatural + hipAngle;
 
-  // Here, "distanceOut" is just the xFoot.
-  // At the moment, yFoot is 0.
+  // Here, "distanceOut" is just the yFoot.
+  // At the moment, xFoot is 0.
   
   // Now rotate and translate according to hip
-  float xFootNew = xFoot * cos(deg2rad(hipAngleAdjusted));
-  float yFootNew = xFoot * sin(deg2rad(hipAngleAdjusted));
+  float xFootNew = yFoot * sin(deg2rad(hipAngleAdjusted));
+  float yFootNew = yFoot * cos(deg2rad(hipAngleAdjusted));
 
   *xOut = xFootNew + hipX;
   *yOut = yFootNew + hipY;
