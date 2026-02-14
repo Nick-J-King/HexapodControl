@@ -25,7 +25,7 @@ void setup()
   initPCIInterruptForTinyReceiver();
 }
 
-volatile uint8_t Command = 0;
+volatile uint8_t Command = code1;
 
 
 void loop()
@@ -33,6 +33,7 @@ void loop()
   switch (Command)
   {
     case code0:
+      Serial.println("NOP");
       break;  // Stop exercising!
     
     case code1:
@@ -61,13 +62,13 @@ void loop()
       break;
   }
 
-  delay(100);
+  delay(1000);
 }
 
 
 void handleReceivedTinyIRData()
 {
-  int Command = TinyIRReceiverData.Command;
+  Command = TinyIRReceiverData.Command;
 }
 
 
