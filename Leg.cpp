@@ -88,4 +88,11 @@ void Leg::SetFootDelta(float x, float y, float z, int Time)
 }
 
 
+void Leg::SetServoAngles(float KneeAngle, float VerticalAngle, float HorizontalAngle, int Time)
+{
+  _Knee->SetAngle(KneeAngle, Time);
+  _Vertical->SetAngle(VerticalAngle, Time);
+  _Horizontal->SetAngle(HorizontalAngle, Time);
+}
+
 // END

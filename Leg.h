@@ -3,7 +3,6 @@
 
 #include "Servo.h"
 
-
 //>>>> SOMEHOW, add proper interpolation.
 // A single leg of the Hexapod robot.
 
@@ -45,6 +44,7 @@ class Leg
     void SetFootPosition(float x, float y, float z, int Time);  // Relative to central coordinates.
 
     void SetFootDelta(float x, float y, float z, int Time);     // Relative to current foot position.
+    void SetServoAngles(float KneeAngle, float VerticalAngle, float HorizontalAngle, int Time);
 
 #ifdef DEBUG
 

@@ -1,19 +1,16 @@
 #include "Robot.h"
 
-void ExerciseRobot();
-
-// >>>> GET THESE FUNCTIONS BACK!
-void ExerciseLeg(Leg *leg);
-void ExerciseAllLegs();
+void SetRobotBelly(int Time);
 
 void CycleLegs();
 void CycleLeg(Leg *leg);
 
-void ExerciseRobot1();
-void ExerciseRobot2();
-void ExerciseRobot3();
-void ExerciseRobot4();
-void ExerciseRobot5();
+void FeetForward(int Time);
+void FeetBackward(int Time);
+void FeetLeft(int Time);
+void FeetRight(int Time);
+void FeetUp(int Time);
+void FeetDown(int Time);
 
 void SetRobotPositionE(int Time);
 void SetRobotPositionF(int Time);
