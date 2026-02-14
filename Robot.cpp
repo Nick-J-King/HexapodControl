@@ -5,7 +5,7 @@
 //>>> FUNCTION to set all servos at once.
 //>>> FUNCTIONS to query SSC...
 
-// >>> Add ALL feet move delta!!!
+// >>> Add ALL feet move (delta) at once and check ALL feet positions are valid!!!
 
 // Knee: Min retracted, Max extended
 // Vertical: Min down, Max up

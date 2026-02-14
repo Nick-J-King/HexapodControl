@@ -63,7 +63,15 @@ void Leg::SetFootPosition(float x, float y, float z, int Time)
   float verticalAngle;
   float hipAngle;
   
-  ComputeAngles(x, y, z, _Angle, _xPos, _yPos, &kneeAngle, &verticalAngle, &hipAngle);
+  if (!ComputeAngles(x, y, z, _Angle, _xPos, _yPos, &kneeAngle, &verticalAngle, &hipAngle))
+  {
+    return; // Cannot set legs to impossible angles!!
+  }
+
+  // Check if angles are ALL valid. Don't set if impossible...
+  if (!_Knee->IsAngleValid(kneeAngle)) return;
+  if (!_Vertical->IsAngleValid(verticalAngle)) return;
+  if (!_Horizontal->IsAngleValid(hipAngle)) return;
 
   //>>> Use function to set all the servos at once...
   _Knee->SetAngle(kneeAngle, Time);

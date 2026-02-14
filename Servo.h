@@ -30,6 +30,7 @@ class Servo
     Servo(int Pin, bool Reverse, int NaturalPWM, float MinAngle, float MaxAngle);
     void SetLeg(Leg *leg) { _leg = leg; }
     
+    bool IsAngleValid(float angle) { return ((angle >= _MinAngle) && (angle <= _MaxAngle)); }
     void SetAngle(float angle, int Time);
     
     int GetAngle() {return _CurrentAngle; }  // <<< Assume current angle is valid for now...

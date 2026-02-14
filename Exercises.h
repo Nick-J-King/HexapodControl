@@ -12,10 +12,11 @@ void FeetRight(int Time);
 void FeetUp(int Time);
 void FeetDown(int Time);
 
-void SetRobotPositionE(int Time);
-void SetRobotPositionF(int Time);
-void SetRobotPositionG(int Time);
-void SetRobotPositionH(int Time);
+void SetRobotTwirlCW(int Time);
+void SetRobotTwirlCCW(int Time);
+
+void SetRobotKickOut(int Time);
+void SetRobotKickIn(int Time);
 
 
 // END //

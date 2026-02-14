@@ -86,8 +86,11 @@ void ComputeFootPosition(float hipNatural, float hipX, float hipY, float kneeAng
 
 
 // Inverse kinematics to determine servo angles from the desired foot position.
-void ComputeAngles(float x, float y, float z, float hipNatural, float hipX, float hipY, float *kneeAngleOut, float *verticalAngleOut, float *hipAngleOut)
+// Return true if OK, false for an impossible position.
+bool ComputeAngles(float x, float y, float z, float hipNatural, float hipX, float hipY, float *kneeAngleOut, float *verticalAngleOut, float *hipAngleOut)
 {
+  bool OK = true;
+
   float xNormal;
   float yNormal;
 
@@ -97,16 +100,28 @@ void ComputeAngles(float x, float y, float z, float hipNatural, float hipX, floa
   *hipAngleOut = rad2deg(atan2(xNormal, yNormal));
 
     // >> If distance too small, use natural hip angle...
-    // >> If angle > 90 or < -90, reverse it!!
   float dist2foot = sqrt(z * z + distanceOut * distanceOut);
     // If distance to foot is > FEMURLENGTH + TIBIALENGTH, we have a problem!
-
+  if (dist2foot > FEMURLENGTH + TIBIALENGTH)
+  {
+    OK = false;
+  } 
   *kneeAngleOut = GetAngleFromCosineLaw(dist2foot, FEMURLENGTH, TIBIALENGTH) - 90.0;
 
-  float c = GetAngleFromCosineLaw(TIBIALENGTH, FEMURLENGTH, dist2foot);
-  float d = rad2deg(atan2(z, distanceOut));
+  if (isnan(*kneeAngleOut))
+  {
+    OK = false;
+  }
+
+  float v = GetAngleFromCosineLaw(TIBIALENGTH, FEMURLENGTH, dist2foot) - rad2deg(atan2(z, distanceOut));;
+  if (isnan(v))
+  {
+    OK = false;
+  }
   
-  *verticalAngleOut = c - d;
+  *verticalAngleOut = v;
+
+  return OK;
 }
 
 

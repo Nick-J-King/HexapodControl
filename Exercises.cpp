@@ -42,19 +42,19 @@ void loop()
       break;
     
     case code2:
-      SetRobotPositionE(1000);
+      SetRobotTwirlCW(1000);
       break;
     
     case code3:
-      SetRobotPositionF(1000);
+      SetRobotTwirlCCW(1000);
       break;
     
     case code4:
-      SetRobotPositionG(1000);
+      SetRobotKickOut(700);
       break;
     
     case code5:
-      SetRobotPositionH(1000);
+      SetRobotKickIn(700);
       break;
  
     case codeUp:
@@ -147,79 +147,52 @@ void CycleLeg(Leg *leg)
 
 // Set servos manually...
 // *Out, *up, CW.
-void SetRobotPositionE(int Time)
+void SetRobotTwirlCW(int Time)
 {
-  sLFK.SetAngle(30.0, 1000);
-  sLMK.SetAngle(30.0, 1000);
-  sLBK.SetAngle(30.0, 1000);
-  sRFK.SetAngle(30.0, 1000);
-  sRMK.SetAngle(30.0, 1000);
-  sRBK.SetAngle(30.0, 1000);
+  lRF.SetServoAngles(30.0, 30.0, 20.0, Time);
+  lRM.SetServoAngles(30.0, 30.0, 20.0, Time);
+  lRB.SetServoAngles(30.0, 30.0, 20.0, Time);
 
-  sLFV.SetAngle(30.0, 1000);
-  sLMV.SetAngle(30.0, 1000);
-  sLBV.SetAngle(30.0, 1000);
-  sRFV.SetAngle(30.0, 1000);
-  sRMV.SetAngle(30.0, 1000);
-  sRBV.SetAngle(30.0, 1000);
-
-  sLFH.SetAngle(10.0, 1000);
-  sLMH.SetAngle(10.0, 1000);
-  sLBH.SetAngle(10.0, 1000);
-  sRFH.SetAngle(10.0, 1000);
-  sRMH.SetAngle(10.0, 1000);
-  sRBH.SetAngle(10.0, 1000);
+  lLF.SetServoAngles(30.0, 30.0, 20.0, Time);
+  lLM.SetServoAngles(30.0, 30.0, 20.0, Time);
+  lLB.SetServoAngles(30.0, 30.0, 20.0, Time);
 }
 
 // *In, *down, CCW
-void SetRobotPositionF(int Time)
+void SetRobotTwirlCCW(int Time)
 {
-  sLFK.SetAngle(-30.0, 1000);
-  sLMK.SetAngle(-30.0, 1000);
-  sLBK.SetAngle(-30.0, 1000);
-  sRFK.SetAngle(-30.0, 1000);
-  sRMK.SetAngle(-30.0, 1000);
-  sRBK.SetAngle(-30.0, 1000);
+  lRF.SetServoAngles(-30.0, -30.0, -20.0, Time);
+  lRM.SetServoAngles(-30.0, -30.0, -20.0, Time);
+  lRB.SetServoAngles(-30.0, -30.0, -20.0, Time);
 
-  sLFV.SetAngle(-20.0, 1000);
-  sLMV.SetAngle(-20.0, 1000);
-  sLBV.SetAngle(-20.0, 1000);
-  sRFV.SetAngle(-20.0, 1000);
-  sRMV.SetAngle(-20.0, 1000);
-  sRBV.SetAngle(-20.0, 1000);
-
-  sLFH.SetAngle(-10.0, 1000);
-  sLMH.SetAngle(-10.0, 1000);
-  sLBH.SetAngle(-10.0, 1000);
-  sRFH.SetAngle(-10.0, 1000);
-  sRMH.SetAngle(-10.0, 1000);
-  sRBH.SetAngle(-10.0, 1000);
+  lLF.SetServoAngles(-30.0, -30.0, -20.0, Time);
+  lLM.SetServoAngles(-30.0, -30.0, -20.0, Time);
+  lLB.SetServoAngles(-30.0, -30.0, -20.0, Time);
 }
 
 
-// Splay out
-void SetRobotPositionG(int Time)
+void SetRobotKickOut(int Time)
 {
-  lRF.SetFootNatural(40.0, 40.0, 0.0, Time);
-  lRM.SetFootNatural(60.0, 0.0, 0.0, Time);
-  lRB.SetFootNatural(40.0, -40.0, 0.0, Time);
+  lRF.SetServoAngles(80.0, -10.0, 0.0, Time);
+  lRM.SetServoAngles(80.0, -10.0, 0.0, Time);
+  lRB.SetServoAngles(80.0, -10.0, 0.0, Time);
 
-  lLF.SetFootNatural(-40.0, 40.0, 0.0, Time);
-  lLM.SetFootNatural(-60.0, 0.0, 0.0, Time);
-  lLB.SetFootNatural(-40.0, -40.0, 0.0, Time);
+  lLF.SetServoAngles(80.0, -10.0, 0.0, Time);
+  lLM.SetServoAngles(80.0, -10.0, 0.0, Time);
+  lLB.SetServoAngles(80.0, -10.0, 0.0, Time);
 }
 
 
-// Splay int
-void SetRobotPositionH(int Time)
+// Kick in
+void SetRobotKickIn(int Time)
 {
-  lRF.SetFootNatural(-40.0, -40.0, 0.0, Time);
-  lRM.SetFootNatural(-60.0, 0.0, 0.0, Time);
-  lRB.SetFootNatural(-40.0, 40.0, 0.0, Time);
+  lRF.SetServoAngles(-70.0, 10.0, 0.0, Time);
+  lRM.SetServoAngles(-70.0, 10.0, 0.0, Time);
+  lRB.SetServoAngles(-70.0, 10.0, 0.0, Time);
 
-  lLF.SetFootNatural(40.0, -40.0, 0.0, Time);
-  lLM.SetFootNatural(60.0, 0.0, 0.0, Time);
-  lLB.SetFootNatural(40.0, 40.0, 0.0, Time);
+  lLF.SetServoAngles(-70.0, 10.0, 0.0, Time);
+  lLM.SetServoAngles(-70.0, 10.0, 0.0, Time);
+  lLB.SetServoAngles(-70.0, 10.0, 0.0, Time);
 }
 
 
@@ -239,13 +212,13 @@ void FeetForward(int Time)
 // All feet backward 5mm.
 void FeetBackward(int Time)
 {
-  lRF.SetFootDelta(0.0, 5.0, 0.0, Time);
-  lRM.SetFootDelta(0.0, 5.0, 0.0, Time);
-  lRB.SetFootDelta(0.0, 5.0, 0.0, Time);
+  lRF.SetFootDelta(0.0, -5.0, 0.0, Time);
+  lRM.SetFootDelta(0.0, -5.0, 0.0, Time);
+  lRB.SetFootDelta(0.0, -5.0, 0.0, Time);
 
-  lLF.SetFootDelta(0.0, 5.0, 0.0, Time);
-  lLM.SetFootDelta(0.0, 5.0, 0.0, Time);
-  lLB.SetFootDelta(0.0, 5.0, 0.0, Time);
+  lLF.SetFootDelta(0.0, -5.0, 0.0, Time);
+  lLM.SetFootDelta(0.0, -5.0, 0.0, Time);
+  lLB.SetFootDelta(0.0, -5.0, 0.0, Time);
 }
 
 // All feet left 5mm.
