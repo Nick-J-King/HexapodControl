@@ -4,12 +4,99 @@
 
 #include "Exercises.h"
 
+//#define DISABLE_PARITY_CHECKS // Disable parity checks. Saves 48 bytes of program memory.
+#define USE_CALLBACK_FOR_TINY_RECEIVER  // Call the user provided function "void handleReceivedTinyIRData()" each time a frame or repeat is received.
+
+#include "TinyIRReceiver.hpp" // include the code
+#include "IRCodes.h"
+
+
+void setup()
+{
+    SetRobotPosition0(0);     // Start in "natural" pose.
+
+  // Enables the interrupt generation on change of IR input signal
+  initPCIInterruptForTinyReceiver();
+}
+
+volatile uint8_t Command = 0;
+
+
+void loop()
+{
+  switch (Command)
+  {
+    case code0:
+      break;  // Stop exercising!
+    
+    case code1:
+      ExerciseRobot1();
+      break;
+    
+    case code2:
+      ExerciseRobot2();
+      break;
+    
+    case code3:
+      ExerciseRobot3();
+      break;
+    
+    case code4:
+      ExerciseRobot4();
+      break;
+    
+    case code5:
+      ExerciseRobot5();
+      break;
+  }
+
+  delay(100);
+}
+
+
+void handleReceivedTinyIRData()
+{
+  int Command = TinyIRReceiverData.Command;
+}
+
 
 //>>> Add exercise to move body up and down...
 
-void ExerciseRobot()
+void ExerciseRobot1()
 {
   CycleLegs();
+}
+
+void ExerciseRobot2()
+{
+  SetRobotPositionE(1000);
+}
+
+void ExerciseRobot3()
+{
+  SetRobotPositionF(1000);
+}
+
+void ExerciseRobot4()
+{
+  SetRobotPositionG(1000);
+}
+
+void ExerciseRobot5()
+{
+  SetRobotPositionH(1000);
+}
+
+
+void CycleLegs()
+{
+  CycleLeg(&lRF);
+  CycleLeg(&lRM);
+  CycleLeg(&lRB);
+
+  CycleLeg(&lLF);
+  CycleLeg(&lLM);
+  CycleLeg(&lLB);
 }
 
 
@@ -18,128 +105,24 @@ void ExerciseRobot()
 #define BLD 2000
 
 
-void CycleLegs()
+void CycleLeg(Leg *leg)
 {
-  // RF test
-  lRF.SetFootNatural(0.0, 0.0, 0.0, T);
+  leg->SetFootNatural(0.0, 0.0, 0.0, T);
   delay(D);
   
-  lRF.SetFootNatural(-50.0, 50.0, -30.0, T);
+  leg->SetFootNatural(-50.0, 50.0, -30.0, T);
   delay(D);
   
-  lRF.SetFootNatural(50.0, 50.0, -30.0, T);
+  leg->SetFootNatural(50.0, 50.0, -30.0, T);
   delay(D);
 
-  lRF.SetFootNatural(50.0, -50.0, -30.0, T);
+  leg->SetFootNatural(50.0, -50.0, -30.0, T);
   delay(D);
   
-  lRF.SetFootNatural(-50.0, -50.0, -30.0, T);
-  delay(D);
-
-  lRF.SetFootNatural(0.0, 0.0, 0.0, T);
-  delay(BLD);
-
-
-  // RM test
-  lRM.SetFootNatural(0.0, 0.0, 0.0, T);
+  leg->SetFootNatural(-50.0, -50.0, -30.0, T);
   delay(D);
   
-  lRM.SetFootNatural(-50.0, 50.0, -30.0, T);
-  delay(D);
-  
-  lRM.SetFootNatural(50.0, 50.0, -30.0, T);
-  delay(D);
-
-  lRM.SetFootNatural(50.0, -50.0, -30.0, T);
-  delay(D);
-  
-  lRM.SetFootNatural(-50.0, -50.0, -30.0, T);
-  delay(D);
-  
-  lRM.SetFootNatural(0.0, 0.0, 0.0, T);
-  
-  delay(BLD);
-
-
-  // RB test
-  lRB.SetFootNatural(0.0, 0.0, 0.0, T);
-  delay(D);
-  
-  lRB.SetFootNatural(-50.0, 50.0, -30.0, T);
-  delay(D);
-  
-  lRB.SetFootNatural(50.0, 50.0, -30.0, T);
-  delay(D);
-
-  lRB.SetFootNatural(50.0, -50.0, -30.0, T);
-  delay(D);
-  
-  lRB.SetFootNatural(-50.0, -50.0, -30.0, T);
-  delay(D);
-  
-  lRB.SetFootNatural(0.0, 0.0, 0.0, T);
-  delay(BLD);
-
-////////////////
-
-  // LF test
-  lLF.SetFootNatural(0.0, 0.0, 0.0, T);
-  delay(D);
-  
-  lLF.SetFootNatural(-50.0, 50.0, -30.0, T);
-  delay(D);
-  
-  lLF.SetFootNatural(50.0, 50.0, -30.0, T);
-  delay(D);
-
-  lLF.SetFootNatural(50.0, -50.0, -30.0, T);
-  delay(D);
-  
-  lLF.SetFootNatural(-50.0, -50.0, -30.0, T);
-  delay(D);
-
-  lLF.SetFootNatural(0.0, 0.0, 0.0, T);
-  delay(BLD);
-
-
-  // RM test
-  lLM.SetFootNatural(0.0, 0.0, 0.0, T);
-  delay(D);
-  
-  lLM.SetFootNatural(-50.0, 50.0, -30.0, T);
-  delay(D);
-  
-  lLM.SetFootNatural(50.0, 50.0, -30.0, T);
-  delay(D);
-
-  lLM.SetFootNatural(50.0, -50.0, -30.0, T);
-  delay(D);
-  
-  lLM.SetFootNatural(-50.0, -50.0, -30.0, T);
-  delay(D);
-  
-  lLM.SetFootNatural(0.0, 0.0, 0.0, T);
-  
-  delay(BLD);
-
-
-  // LB test
-  lLB.SetFootNatural(0.0, 0.0, 0.0, T);
-  delay(D);
-  
-  lLB.SetFootNatural(-50.0, 50.0, -30.0, T);
-  delay(D);
-  
-  lLB.SetFootNatural(50.0, 50.0, -30.0, T);
-  delay(D);
-
-  lLB.SetFootNatural(50.0, -50.0, -30.0, T);
-  delay(D);
-  
-  lLB.SetFootNatural(-50.0, -50.0, -30.0, T);
-  delay(D);
-  
-  lLB.SetFootNatural(0.0, 0.0, 0.0, T);
+  leg->SetFootNatural(0.0, 0.0, 0.0, T);
   delay(BLD);
 }
 

@@ -8,6 +8,11 @@
 #include "Tests.h"
 
 
+void loop()
+{
+}
+
+
 // Run debug checks from setup(), if in DEBUG mode.
 void RunDebugChecks()
 {

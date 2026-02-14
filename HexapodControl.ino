@@ -4,13 +4,11 @@
 
 #include "Robot.h"
 
+
 #ifdef DEBUG
 #include "Debug.h"
 #endif // DEBUG
 
-#ifdef EXERCISE
-#include "Exercises.h"
-#endif // EXERCISE
 
 #ifdef NORMAL
 
@@ -23,22 +21,20 @@
 #endif // NORMAL
 
 
+#ifndef EXERCISE
+
 void setup()
 {
   Serial.begin(115200);
   delay(1000);
   
+
 #ifdef DEBUG
 
-  RunDebugChecks();
+  RunDebugChecks(); // NOTE DEBUG defines its own loop too.
 
 #endif
 
-#ifdef EXERCISE
-
-  ExerciseRobot();
-
-#endif
 
 #ifdef NORMAL // "Normal" mode with commands from IR
 
@@ -56,21 +52,21 @@ void setup()
 #endif // NORMAL
 }
 
+#endif // EXERCISE has its own setup and loop
+
+
+#ifdef NORMAL
 
 volatile int state = 1;
 
 void loop()
 {
-#ifdef NORMAL
   if (state == 1)
   {
     WalkLoop();
   }
-#endif // NORMAL
 }
 
-
-#ifdef NORMAL
 
 volatile uint8_t Command = 0;
 

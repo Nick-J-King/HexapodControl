@@ -3,8 +3,6 @@
 #ifndef Utils_h
 #define Utils_h
 
-#include <Arduino.h>
-
 
 #define TWO_PI 6.283185307179586476925286766559
 #define DEG_TO_RAD 0.017453292519943295769236907684886

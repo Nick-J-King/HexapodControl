@@ -9,7 +9,7 @@
 void TestKinematics()
 {
 
-  P("\nTest kinmatics of right front leg");
+  P("\nTest kinematics of right front leg");
 
   float footXin = 130;  //119.75;
   float footYin = 155.0;
