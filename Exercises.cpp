@@ -13,7 +13,13 @@
 
 void setup()
 {
-    SetRobotPosition0(0);     // Start in "natural" pose.
+  Serial.begin(115200);
+  delay(1000);
+
+  Serial.println("Exercises setup");
+
+  Serial.println("SetRobotPosition0");
+  SetRobotPosition0(0);     // Start in "natural" pose.
 
   // Enables the interrupt generation on change of IR input signal
   initPCIInterruptForTinyReceiver();
@@ -30,22 +36,27 @@ void loop()
       break;  // Stop exercising!
     
     case code1:
+      Serial.println("Exercise 1");
       ExerciseRobot1();
       break;
     
     case code2:
+      Serial.println("Exercise 2");
       ExerciseRobot2();
       break;
     
     case code3:
+      Serial.println("Exercise 3");
       ExerciseRobot3();
       break;
     
     case code4:
+      Serial.println("Exercise 4");
       ExerciseRobot4();
       break;
     
     case code5:
+      Serial.println("Exercise 5");
       ExerciseRobot5();
       break;
   }
