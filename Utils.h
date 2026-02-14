@@ -12,7 +12,8 @@
 float deg2rad(float deg);
 float rad2deg(float rad);
 
-int Clamp(int val, int Min, int Max);
+int ClampInt(int val, int Min, int Max);
+float ClampFloat(float val, float Min, float Max);
 
 
 float GetAngleFromCosineLaw(float opp, float adj1, float adj2);

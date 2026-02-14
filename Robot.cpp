@@ -11,30 +11,37 @@
 // Vertical: Min down, Max up
 // Horizontal: Min CCW, Max CW
 
-Servo sRFK(RFK, 1000, 2000, 1514);  //1489);
-Servo sRFV(RFV, 2000, 1000, 1428);  //1466);  //1428);
-Servo sRFH(RFH, 1000, 2000, 1499);  //1523);  // REV
+#define minKnee -70.0
+#define maxKnee 80.0
+#define minVertical -80.0
+#define maxVertical 80.0
+#define minHorizontal -40.0
+#define maxHorizontal 40.0
 
-Servo sRMK(RMK, 1000, 2000, 1523);  //1517);
-Servo sRMV(RMV, 2000, 1000, 1507);  //1489);
-Servo sRMH(RMH, 1000, 2000, 1513);  //1520);  // REV
+Servo sRFK(RFK, false, 1514, minKnee, maxKnee);
+Servo sRFV(RFV, true, 1428, minVertical, maxVertical);
+Servo sRFH(RFH, false, 1499, minHorizontal, maxHorizontal);
 
-Servo sRBK(RBK, 1000, 2000, 1455);  //1401);
-Servo sRBV(RBV, 2000, 1000, 1531);  //1467);
-Servo sRBH(RBH, 1000, 2000, 1538);  //1599);  // REV
+Servo sRMK(RMK, false, 1523, minKnee, maxKnee);
+Servo sRMV(RMV, true, 1507, minVertical, maxVertical);
+Servo sRMH(RMH, false, 1513, minHorizontal, maxHorizontal);
+
+Servo sRBK(RBK, false, 1455, minKnee, maxKnee);
+Servo sRBV(RBV, true, 1531, minVertical, maxVertical);
+Servo sRBH(RBH, false, 1538, minHorizontal, maxHorizontal);
 
 
-Servo sLFK(LFK, 2000, 1000, 1516);  //1478);
-Servo sLFV(LFV, 1000, 2000, 1427);  //1447);  //1400);
-Servo sLFH(LFH, 1000, 2000, 1537);  //1670);
+Servo sLFK(LFK, true, 1516, minKnee, maxKnee);
+Servo sLFV(LFV, false, 1427, minVertical, maxVertical);
+Servo sLFH(LFH, false, 1537, minHorizontal, maxHorizontal);
 
-Servo sLMK(LMK, 2000, 1000, 1469);  //1445);
-Servo sLMV(LMV, 1000, 2000, 1478);  //1489);
-Servo sLMH(LMH, 1000, 2000, 1489);  //1501);
+Servo sLMK(LMK, true, 1469, minKnee, maxKnee);
+Servo sLMV(LMV, false, 1478, minVertical, maxVertical);
+Servo sLMH(LMH, false, 1489, minHorizontal, maxHorizontal);
 
-Servo sLBK(LBK, 2000, 1000, 1540);  //1570);
-Servo sLBV(LBV, 1000, 2000, 1488);  //1526);
-Servo sLBH(LBH, 1000, 2000, 1406);  //1379);
+Servo sLBK(LBK, true, 1540, minKnee, maxKnee);
+Servo sLBV(LBV, false, 1488, minVertical, maxVertical);
+Servo sLBH(LBH, false, 1406, minHorizontal, maxHorizontal);
 
 
 // 113.5 is HIPWIDTH + FEMURLENGTH

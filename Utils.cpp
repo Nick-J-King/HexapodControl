@@ -19,28 +19,25 @@ float rad2deg(float rad)
 }
 
 
-int Clamp(int val, int Min, int Max)
+int ClampInt(int val, int Min, int Max)
 {
-  if (Min < Max)
-  {
-    // Normal way.
-    if (val <= Min)
-      return Min;
-    else if (val >= Max)
-      return Max;
-    else
-      return val;
-  }
+  if (val <= Min)
+    return Min;
+  else if (val >= Max)
+    return Max;
   else
-  {
-    // Reversed way.
-    if (val >= Min)
-      return Min;
-    else if (val <= Max)
-      return Max;
-    else
-      return val;
-  }
+    return val;
+}
+
+
+float ClampFloat(float val, float Min, float Max)
+{
+  if (val <= Min)
+    return Min;
+  else if (val >= Max)
+    return Max;
+  else
+    return val;
 }
 
 

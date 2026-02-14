@@ -13,9 +13,10 @@ class Servo
   private:
 
     int _Pin;
-    int _Min;
-    int _Max;
-    int _Natural;   // PWM value at zero degrees.
+    bool _Reverse;
+    float _MinAngle;
+    float _MaxAngle;
+    int _NaturalPWM;   // PWM value at zero degrees.
 
     Leg *_leg;
 
@@ -26,7 +27,7 @@ class Servo
 
   public:
 
-    Servo(int Pin, int Min, int Max, int Natural);
+    Servo(int Pin, bool Reverse, int NaturalPWM, float MinAngle, float MaxAngle);
     void SetLeg(Leg *leg) { _leg = leg; }
     
     void SetAngle(float angle, int Time);

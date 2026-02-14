@@ -6,59 +6,65 @@
 #include "Robot.h"
 
 
-Servo::Servo(int Pin, int Min, int Max, int Natural)
+Servo::Servo(int Pin, bool Reverse, int NaturalPWM, float MinAngle, float MaxAngle)
 {
   _Pin = Pin;
-  _Min = Min;
-  _Max = Max;
-  _Natural = Natural;   // PWM in "natural" position.
+  _Reverse = Reverse;
+  _MinAngle = MinAngle;
+  _MaxAngle = MaxAngle;
+  _NaturalPWM = NaturalPWM;   // PWM in "natural" position.
 
   _CurrentPWM = 0;
   _CurrentAngle = UNKNOWN_ANGLE;
 }
 
+// >>> Need to flag if angle was clamped.
 
 // Set angle according to IK.
 void Servo::SetAngle(float angle, int Time)
 {
-  int pos;
-  if (_Min < _Max)
+  angle = ClampFloat(angle, _MinAngle, _MaxAngle);
+
+  int PWM;
+  if (_Reverse)
   {
-    pos = _Natural + angle * PWMPERDEGREE;
+    PWM = _NaturalPWM - angle * PWMPERDEGREE;
   }
   else
   {
-    pos = _Natural - angle * PWMPERDEGREE;
+    PWM = _NaturalPWM + angle * PWMPERDEGREE;
   }
   
-  SetPWM(pos, Time);
+  SetPWM(PWM, Time);
 
   _CurrentAngle = angle;
   _leg->InvalidateFootPosition();
 }
 
 
-// >>> Clamp against ABSOLUTEMIN and ABSOLUTEMAX too.
+// >>> Need to flag if PWM was clamped.
 
-void Servo::SetPWM(int Pos, int Time)
+void Servo::SetPWM(int PWM, int Time)
 {
-  if (_CurrentPWM == Pos)
+  if (_CurrentPWM == PWM)
     return;
+
+  PWM = ClampInt(PWM, ABSOLUTE_MIN, ABSOLUTE_MAX);
 
   char sBuffer [35];
 
   if (Time == 0)
   {
-    sprintf(sBuffer, "#%dP%d", _Pin, Clamp(Pos, _Min, _Max));
+    sprintf(sBuffer, "#%dP%d", _Pin, PWM);
   }
   else
   {
-    sprintf(sBuffer, "#%dP%dT%d", _Pin, Clamp(Pos, _Min, _Max), Time);
+    sprintf(sBuffer, "#%dP%dT%d", _Pin, PWM, Time);
   }
 
   Serial.println(sBuffer);
 
-  _CurrentPWM = Pos;
+  _CurrentPWM = PWM;
 }
 
 
