@@ -42,6 +42,16 @@ void Servo::SetAngle(float angle, int Time)
 }
 
 
+// Set natual angle.
+void Servo::SetNatural(int Time)
+{
+  SetPWM(_NaturalPWM, Time);
+
+  _CurrentAngle = 0.0;
+  _leg->InvalidateFootPosition();
+}
+
+
 // >>> Need to flag if PWM was clamped.
 
 void Servo::SetPWM(int PWM, int Time)

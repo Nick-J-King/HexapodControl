@@ -32,6 +32,7 @@ class Servo
     
     bool IsAngleValid(float angle) { return ((angle >= _MinAngle) && (angle <= _MaxAngle)); }
     void SetAngle(float angle, int Time);
+    void SetNatural(int Time);
     
     int GetAngle() {return _CurrentAngle; }  // <<< Assume current angle is valid for now...
 

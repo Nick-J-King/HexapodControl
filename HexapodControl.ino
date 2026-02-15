@@ -22,6 +22,7 @@
 
 
 #ifndef EXERCISE
+#ifndef CALIBRATE
 
 void setup()
 {
@@ -52,6 +53,7 @@ void setup()
 #endif // NORMAL
 }
 
+#endif // CALIBRATE has its own setup and loop
 #endif // EXERCISE has its own setup and loop
 
 

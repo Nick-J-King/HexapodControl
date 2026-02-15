@@ -6,6 +6,7 @@
 #include "Utils.h"
 #include "WakeUp.h"
 #include "Walk.h"
+#include "Kinematics.h"
 
 
 // >>> MAKE THIS A CLASS
