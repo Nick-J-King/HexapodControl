@@ -59,7 +59,7 @@ void loop()
       SelectLeg(&lRM);
       break;
     case code8:
-      SelectLeg(&lLB);
+      SelectLeg(&lRB);
       break;
 
     case code3:
