@@ -77,7 +77,7 @@ void loop()
       break;
  
     case code6:
-      // ONE MORE EXERCISE TO MAKE UP!!!
+      SwirlTest();
       break;
 
     case code7:
@@ -304,37 +304,54 @@ void FeetDown(int Time)
   lLB.SetFootDelta(0.0, 0.0, 5.0, Time);
 }
 
+#define DB 5
+ // Delay for body move exercises loops
+
+#define DBB 400
+ // Delay for body move exercises changes
+
+#define DBS 500
+ // Delay at the start
+
+#define DBF 100
+ // Delay at the end
+
 // Starting from natural, twist one way, then come back and twist the other, then return to normal.
 void YawTest()
 {
   SetRobotAxisAndRotation(0.0, 0.0, 1.0, 0.0);  // Start with neutral rotation.
-  SetRobotPosition0(100);     // Start in "natural" pose.
+  SetRobotPosition0(DBS);     // Start in "natural" pose.
+  delay(DBS);
 
   float angle = 1.0;
 
   for (angle = 1.0; angle <= 25.0; angle += 1.0)
   {
     SetRobotAxisAndRotation(0.0, 0.0, 1.0, angle);  // Start with neutral rotation.
-    SetRobotPosition0(100);     // Start in "natural" pose.
+    SetRobotPosition0(DB);     // Start in "natural" pose.
+    delay(DB);
   }
-  delay(1000);
+  angle -= 1.0;
+  delay(DBB);
+
   for (; angle >= -25.0; angle -= 1.0)
   {
     SetRobotAxisAndRotation(0.0, 0.0, 1.0, angle);
-    SetRobotPosition0(100);
+    SetRobotPosition0(DB);
+    delay(DB);
   }
-  delay(1000);
+  angle += 1.0;
+  delay(DBB);
 
   for (; angle < 0.0; angle += 1.0)
   {
     SetRobotAxisAndRotation(0.0, 0.0, 1.0, angle);
-    SetRobotPosition0(100);
+    SetRobotPosition0(DB);
+    delay(DB);
   }
-  delay(120);
-
   SetRobotAxisAndRotation(0.0, 0.0, 1.0, 0.0);  // End with neutral rotation.
-  SetRobotPosition0(100);     // End in "natural" pose.
-  delay(500);
+  SetRobotPosition0(DBF);     // End in "natural" pose.
+  delay(DBF);
 }
 
 
@@ -342,33 +359,38 @@ void YawTest()
 void PitchTest()
 {
   SetRobotAxisAndRotation(1.0, 0.0, 0.0, 0.0);  // Start with neutral rotation.
-  SetRobotPosition0(100);     // Start in "natural" pose.
+  SetRobotPosition0(DBS);     // Start in "natural" pose.
+  delay(DBS);
 
   float angle = 1.0;
 
   for (angle = 1.0; angle <= 25.0; angle += 1.0)
   {
     SetRobotAxisAndRotation(1.0, 0.0, 0.0, angle);  // Start with neutral rotation.
-    SetRobotPosition0(100);     // Start in "natural" pose.
+    SetRobotPosition0(DB);     // Start in "natural" pose.
+    delay(DB);
   }
-  delay(1000);
+  angle -= 1.0;
+  delay(DBB);
+
   for (; angle >= -25.0; angle -= 1.0)
   {
     SetRobotAxisAndRotation(1.0, 0.0, 0.0, angle);
-    SetRobotPosition0(100);
+    SetRobotPosition0(DB);
+    delay(DB);
   }
-  delay(1000);
+  angle += 1.0;
+  delay(DBB);
 
   for (; angle < 0.0; angle += 1.0)
   {
     SetRobotAxisAndRotation(1.0, 0.0, 0.0, angle);
-    SetRobotPosition0(100);
+    SetRobotPosition0(DB);
+    delay(DB);
   }
-  delay(120);
-
   SetRobotAxisAndRotation(1.0, 0.0, 0.0, 0.0);  // End with neutral rotation.
-  SetRobotPosition0(100);     // End in "natural" pose.
-  delay(500);
+  SetRobotPosition0(DBF);     // End in "natural" pose.
+  delay(DBF);
 }
 
 
@@ -376,33 +398,137 @@ void PitchTest()
 void RollTest()
 {
   SetRobotAxisAndRotation(0.0, 1.0, 0.0, 0.0);  // Start with neutral rotation.
-  SetRobotPosition0(100);     // Start in "natural" pose.
+  SetRobotPosition0(DBS);     // Start in "natural" pose.
+  delay(DBS);
 
   float angle = 1.0;
 
   for (angle = 1.0; angle <= 25.0; angle += 1.0)
   {
     SetRobotAxisAndRotation(0.0, 1.0, 0.0, angle);  // Start with neutral rotation.
-    SetRobotPosition0(100);     // Start in "natural" pose.
+    SetRobotPosition0(DB);     // Start in "natural" pose.
+    delay(DB);
   }
-  delay(1000);
+  angle -= 1.0;
+  delay(DBB);
+
   for (; angle >= -25.0; angle -= 1.0)
   {
     SetRobotAxisAndRotation(0.0, 1.0, 0.0, angle);
-    SetRobotPosition0(100);
+    SetRobotPosition0(DB);
+    delay(DB);
   }
-  delay(1000);
+  angle += 1.0;
+  delay(DBB);
 
   for (; angle < 0.0; angle += 1.0)
   {
     SetRobotAxisAndRotation(0.0, 1.0, 0.0, angle);
-    SetRobotPosition0(100);
+    SetRobotPosition0(DB);
+    delay(DB);
   }
-  delay(120);
+  SetRobotAxisAndRotation(0.0, 1.0, 0.0, 0.0);  // End with neutral rotation.
+  SetRobotPosition0(DBF);     // End in "natural" pose.
+  delay(DBF);
+}
+
+#define SA 15
+  // Target swirl angle
+
+#define SI 300
+  // Iterations of full swirl
+
+#define AI 0.2
+  // Angle increment
+
+// Starting from natural, and a y-axis rotation small, rotate that axis constantly around the z-axis,
+// while increasing that rotation, then decrease it back to zero, and beyond to negative rotation.
+// Then come back to zero rotation.
+void SwirlTest()
+{
+  SetRobotAxisAndRotation(0.0, 1.0, 0.0, 0.0);  // Start with neutral rotation.
+  SetRobotPosition0(DBS);     // Start in "natural" pose.
+  delay(DBS);
+
+  float rotateAxisX = 0.0;
+  float rotateAxisY = 1.0;
+  float rotateAxisZ = 0.0;
+  float rotateAxisXin = 0.0;
+  float rotateAxisYin = 1.0;
+  float rotateAxisZin = 0.0;
+  
+  float angle = 1.0;
+
+  Matrix3D zRotation;
+  Construct3DRotationMatrix(&zRotation, 0.0, 0.0, 1.0, 5.0);
+
+  for (angle = 1.0; angle <= SA; angle += AI)
+  {
+    SetRobotAxisAndRotation(rotateAxisX, rotateAxisY, rotateAxisZ, angle);
+    SetRobotPosition0(DB);
+    rotateAxisXin = rotateAxisX;
+    rotateAxisYin = rotateAxisY;
+    rotateAxisZin = rotateAxisZ;
+    Multiply3D(&zRotation, rotateAxisXin, rotateAxisYin, rotateAxisZin, &rotateAxisX, &rotateAxisY, &rotateAxisZ);
+    delay(DB);
+  }
+  for (int i = 1; i < SI; i++)
+  {
+    SetRobotAxisAndRotation(rotateAxisX, rotateAxisY, rotateAxisZ, angle);
+    SetRobotPosition0(DB);
+    rotateAxisXin = rotateAxisX;
+    rotateAxisYin = rotateAxisY;
+    rotateAxisZin = rotateAxisZ;
+    Multiply3D(&zRotation, rotateAxisXin, rotateAxisYin, rotateAxisZin, &rotateAxisX, &rotateAxisY, &rotateAxisZ);
+    delay(DB);
+  }
+  for (; angle > 0.0; angle -= AI)
+  {
+    SetRobotAxisAndRotation(rotateAxisX, rotateAxisY, rotateAxisZ, angle);
+    SetRobotPosition0(DB);
+    rotateAxisXin = rotateAxisX;
+    rotateAxisYin = rotateAxisY;
+    rotateAxisZin = rotateAxisZ;
+    Multiply3D(&zRotation, rotateAxisXin, rotateAxisYin, rotateAxisZin, &rotateAxisX, &rotateAxisY, &rotateAxisZ);
+    delay(DB);
+  }
+
+  delay(DBB);
+
+  for (angle = 1.0; angle >= -SA; angle -= AI)
+  {
+    SetRobotAxisAndRotation(rotateAxisX, rotateAxisY, rotateAxisZ, angle);
+    SetRobotPosition0(DB);
+    rotateAxisXin = rotateAxisX;
+    rotateAxisYin = rotateAxisY;
+    rotateAxisZin = rotateAxisZ;
+    Multiply3DInverse(&zRotation, rotateAxisXin, rotateAxisYin, rotateAxisZin, &rotateAxisX, &rotateAxisY, &rotateAxisZ);
+    delay(DB);
+  }
+  for (int i = 1; i < SI; i++)
+  {
+    SetRobotAxisAndRotation(rotateAxisX, rotateAxisY, rotateAxisZ, angle);
+    SetRobotPosition0(DB);
+    rotateAxisXin = rotateAxisX;
+    rotateAxisYin = rotateAxisY;
+    rotateAxisZin = rotateAxisZ;
+    Multiply3DInverse(&zRotation, rotateAxisXin, rotateAxisYin, rotateAxisZin, &rotateAxisX, &rotateAxisY, &rotateAxisZ);
+    delay(DB);
+  }
+  for (; angle < 0.0; angle += AI)
+  {
+    SetRobotAxisAndRotation(rotateAxisX, rotateAxisY, rotateAxisZ, angle);
+    SetRobotPosition0(DB);
+    rotateAxisXin = rotateAxisX;
+    rotateAxisYin = rotateAxisY;
+    rotateAxisZin = rotateAxisZ;
+    Multiply3DInverse(&zRotation, rotateAxisXin, rotateAxisYin, rotateAxisZin, &rotateAxisX, &rotateAxisY, &rotateAxisZ);
+    delay(DB);
+  }
 
   SetRobotAxisAndRotation(0.0, 1.0, 0.0, 0.0);  // End with neutral rotation.
-  SetRobotPosition0(100);     // End in "natural" pose.
-  delay(500);
+  SetRobotPosition0(DBF);     // End in "natural" pose.
+  delay(DBF);
 }
 
 

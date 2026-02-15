@@ -64,8 +64,8 @@ void PrintVector(String sName, float x, float y, float z)
 //  y forward
 //  z down
 
-
-// >>> DON'T USE DELTA MOVES UNTIL THE ROBOT ORIENTATION IS INCORPORATED!!!
+// >>> NOTE: May need to take body rotation into account for delta moves.
+// ??? Hmm...
 
 // Forward kinematics to determine foot position in central coordinates from given servo angles.
 void ComputeFootPosition(float hipNatural, float hipX, float hipY, float kneeAngle, float verticalAngle, float hipAngle, float *xOut, float *yOut, float *zOut)
@@ -88,9 +88,11 @@ void ComputeFootPosition(float hipNatural, float hipX, float hipY, float kneeAng
   float xFootNew = yFoot * sin(deg2rad(hipAngleAdjusted));
   float yFootNew = yFoot * cos(deg2rad(hipAngleAdjusted));
 
-  *xOut = xFootNew + hipX;
-  *yOut = yFootNew + hipY;
-  *zOut = zFoot;
+  // Compensate for body rotation.
+  Multiply3DInverse(&robotRotationMatrix, xFootNew + hipX, yFootNew + hipY, zFoot, xOut, yOut, zOut);
+  //*xOut = xFootNew + hipX;
+  //*yOut = yFootNew + hipY;
+  //*zOut = zFoot;
 }
 
 

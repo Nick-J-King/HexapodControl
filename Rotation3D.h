@@ -22,6 +22,7 @@ struct Matrix3D
 float Length3D(float x, float y, float z);
 
 void Multiply3D(Matrix3D *m, float x, float y, float z, float *xOut, float *yOut, float *zOut);
+void Multiply3DInverse(Matrix3D *m, float x, float y, float z, float *xOut, float *yOut, float *zOut);
 void NormaliseXYZ(float *x, float *y, float *z);
 void Construct3DRotationMatrix(Matrix3D *m, float x, float y, float z, float angle);
 

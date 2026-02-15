@@ -20,6 +20,16 @@ void Multiply3D(Matrix3D *m, float x, float y, float z, float *xOut, float *yOut
 }
 
 
+// Assume x,y,z is a 3x1 column matrix, and matrix m is 3x3.
+// Return matrix(transpose) * (x,y,z)
+void Multiply3DInverse(Matrix3D *m, float x, float y, float z, float *xOut, float *yOut, float *zOut)
+{
+  *xOut = m->m00 * x + m->m10 * y + m->m20 * z;
+  *yOut = m->m01 * x + m->m11 * y + m->m21 * z;
+  *zOut = m->m02 * x + m->m12 * y + m->m22 * z;
+}
+
+
 void NormaliseXYZ(float *x, float *y, float *z)
 {
   float length = sqrt(*x * *x + *y * *y + *z * *z);

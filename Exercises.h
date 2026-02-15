@@ -21,6 +21,7 @@ void SetRobotKickIn(int Time);
 void YawTest();
 void PitchTest();
 void RollTest();
+void SwirlTest();
 
 
 // END //
