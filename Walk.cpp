@@ -34,6 +34,7 @@ void WalkLoop()
 // Natural (resting) pose.
 void SetRobotPosition0(int Time)
 {
+  /*
   lRF.SetNatural(Time);
   lRM.SetNatural(Time);
   lRB.SetNatural(Time);
@@ -41,6 +42,17 @@ void SetRobotPosition0(int Time)
   lLF.SetNatural(Time);
   lLM.SetNatural(Time);
   lLB.SetNatural(Time);
+  */
+  
+  // Right
+  lRF.SetFootNatural(0.0, 0.0, 0.0, Time); // A
+  lRM.SetFootNatural(0.0, 0.0, 0.0, Time);
+  lRB.SetFootNatural(0.0, 0.0, 0.0, Time); // A
+
+  // Left
+  lLF.SetFootNatural(0.0, 0.0, 0.0, Time);
+  lLM.SetFootNatural(0.0, 0.0, 0.0, Time); // A
+  lLB.SetFootNatural(0.0, 0.0, 0.0, Time);
 }
 
 

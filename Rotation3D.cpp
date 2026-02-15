@@ -16,7 +16,7 @@ void Multiply3D(Matrix3D *m, float x, float y, float z, float *xOut, float *yOut
 {
   *xOut = m->m00 * x + m->m01 * y + m->m02 * z;
   *yOut = m->m10 * x + m->m11 * y + m->m12 * z;
-  *yOut = m->m20 * x + m->m21 * y + m->m22 * z;
+  *zOut = m->m20 * x + m->m21 * y + m->m22 * z;
 }
 
 

@@ -1,5 +1,8 @@
 // Main Robot stuff.
 
+#ifndef Robot_h
+#define Robot_h
+
 #include "Flags.h"
 #include "Servo.h"
 #include "Leg.h"
@@ -9,6 +12,14 @@
 #include "Rotation3D.h"
 #include "Kinematics.h"
 
+void SetRobotAxisAndRotation(float x, float y, float z, float angle);
+
+// GLOBAL
+extern Matrix3D robotRotationMatrix;
+extern float robotRotationAxisX;
+extern float robotRotationAxisY;
+extern float robotRotationAxisZ;
+extern float robotRotation;
 
 // >>> MAKE THIS A CLASS
 
@@ -107,6 +118,9 @@ void NaturalAll(int Time);  // Set robot to "natural" position.
 #ifdef DEBUG
 void ReportRobot();
 #endif
+
+
+#endif // Robot_h
 
 
 // END //

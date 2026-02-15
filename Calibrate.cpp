@@ -18,6 +18,8 @@ void setup()
   Serial.begin(115200);
   delay(1000);
 
+  SetRobotAxisAndRotation(0.0, 0.0, 1.0, 0.0);
+
   SetRobotPosition0(0);     // Start in "natural" pose.
 
   // Enables the interrupt generation on change of IR input signal

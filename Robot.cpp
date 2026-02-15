@@ -2,6 +2,14 @@
 
 #include "Robot.h"
 
+
+Matrix3D robotRotationMatrix;
+float robotRotationAxisX;
+float robotRotationAxisY;
+float robotRotationAxisZ;
+float robotRotation;
+
+
 //>>> FUNCTION to set all servos at once.
 //>>> FUNCTIONS to query SSC...
 
@@ -68,6 +76,18 @@ Leg lLB(-XPOS, -YPOS, &sLBK, &sLBV, &sLBH, -135.0, LX, BY, Z);
 Leg lLM(-XPOSM, 0, &sLMK, &sLMV, &sLMH, -90.0, LMX, MY, Z);
 Leg lLF(-XPOS, YPOS, &sLFK, &sLFV, &sLFH, -45.0, LX, FY, Z);
 
+
+void SetRobotAxisAndRotation(float x, float y, float z, float angle)
+{
+  robotRotationAxisX = x;
+  robotRotationAxisY = y;
+  robotRotationAxisZ = z;
+  NormaliseXYZ(&robotRotationAxisX, &robotRotationAxisY, &robotRotationAxisZ);
+
+  Construct3DRotationMatrix(&robotRotationMatrix, robotRotationAxisX, robotRotationAxisY, robotRotationAxisZ, angle);
+
+  robotRotation = angle;
+}
 
 void NaturalAll(int Time)
 {

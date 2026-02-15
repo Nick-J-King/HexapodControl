@@ -15,11 +15,57 @@ float GetAngleFromCosineLaw(float opp, float adj1, float adj2)
 // ((( ALERT ON ERRORS )))
 // >>> CHECK THE EDGE CASES
 
+// TEMP:
+
+
+void PrintMatrix(String sName, Matrix3D *m)
+{
+  char sBuffer[150];
+  char s00[16];
+  char s01[16];
+  char s02[16];
+  char s10[16];
+  char s11[16];
+  char s12[16];
+  char s20[16];
+  char s21[16];
+  char s22[16];
+
+  dtostrf(m->m00, 4, 2, s00);
+  dtostrf(m->m01, 4, 2, s01);
+  dtostrf(m->m02, 4, 2, s02);
+  dtostrf(m->m10, 4, 2, s10);
+  dtostrf(m->m11, 4, 2, s11);
+  dtostrf(m->m12, 4, 2, s12);
+  dtostrf(m->m20, 4, 2, s20);
+  dtostrf(m->m21, 4, 2, s21);
+  dtostrf(m->m22, 4, 2, s22);
+
+  sprintf(sBuffer, "%s: [(%s, %s, %s), (%s, %s, %s), (%s, %s, %s)]", sName.c_str(), s00, s01, s02, s10, s11, s12, s20, s21, s22);
+  Serial.println(sBuffer);
+}
+
+void PrintVector(String sName, float x, float y, float z)
+{
+  char sBuffer[150];
+  char sX[16];
+  char sY[16];
+  char sZ[16];
+  dtostrf(x, 4, 2, sX);
+  dtostrf(y, 4, 2, sY);
+  dtostrf(z, 4, 2, sZ);
+
+  sprintf(sBuffer, "%s: (%s, %s, %s)", sName.c_str(), sX, sY, sZ);
+  Serial.println(sBuffer);
+}
 
 // In mm:
 //  x to the right
 //  y forward
 //  z down
+
+
+// >>> DON'T USE DELTA MOVES UNTIL THE ROBOT ORIENTATION IS INCORPORATED!!!
 
 // Forward kinematics to determine foot position in central coordinates from given servo angles.
 void ComputeFootPosition(float hipNatural, float hipX, float hipY, float kneeAngle, float verticalAngle, float hipAngle, float *xOut, float *yOut, float *zOut)
@@ -50,8 +96,17 @@ void ComputeFootPosition(float hipNatural, float hipX, float hipY, float kneeAng
 
 // Inverse kinematics to determine servo angles from the desired foot position.
 // Return true if OK, false for an impossible position.
-bool ComputeAngles(float x, float y, float z, float hipNatural, float hipX, float hipY, float *kneeAngleOut, float *verticalAngleOut, float *hipAngleOut)
+bool ComputeAngles(float xIn, float yIn, float zIn, float hipNatural, float hipX, float hipY, float *kneeAngleOut, float *verticalAngleOut, float *hipAngleOut)
 {
+  float x, y, z;
+//PrintMatrix("Robot matrix", &robotRotationMatrix);
+
+  // OK! We are adjusting to an oriented body!!
+  Multiply3D(&robotRotationMatrix, xIn, yIn, zIn, &x, &y, &z);
+
+//PrintVector("\nIN", xIn, yIn, zIn);
+//PrintVector("Rotated", x, y, z);
+
   bool OK = true;
 
   float xNormal;
