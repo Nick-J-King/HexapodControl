@@ -15,33 +15,33 @@
 #define maxKnee 80.0
 #define minVertical -80.0
 #define maxVertical 80.0
-#define minHorizontal -40.0
-#define maxHorizontal 40.0
+#define minHorizontal -45.0
+#define maxHorizontal 45.0
 
 Servo sRFK(RFK, false, 1514, minKnee, maxKnee);
 Servo sRFV(RFV, true, 1428, minVertical, maxVertical);
-Servo sRFH(RFH, false, 1499, minHorizontal, maxHorizontal);
+Servo sRFH(RFH, false, 1487, minHorizontal, maxHorizontal);
 
 Servo sRMK(RMK, false, 1523, minKnee, maxKnee);
 Servo sRMV(RMV, true, 1507, minVertical, maxVertical);
-Servo sRMH(RMH, false, 1513, minHorizontal, maxHorizontal);
+Servo sRMH(RMH, false, 1535, minHorizontal, maxHorizontal);
 
 Servo sRBK(RBK, false, 1455, minKnee, maxKnee);
 Servo sRBV(RBV, true, 1531, minVertical, maxVertical);
-Servo sRBH(RBH, false, 1538, minHorizontal, maxHorizontal);
+Servo sRBH(RBH, false, 1368, minHorizontal, maxHorizontal);
 
 
 Servo sLFK(LFK, true, 1516, minKnee, maxKnee);
 Servo sLFV(LFV, false, 1427, minVertical, maxVertical);
-Servo sLFH(LFH, false, 1537, minHorizontal, maxHorizontal);
+Servo sLFH(LFH, false, 1593, minHorizontal, maxHorizontal);
 
 Servo sLMK(LMK, true, 1469, minKnee, maxKnee);
 Servo sLMV(LMV, false, 1478, minVertical, maxVertical);
-Servo sLMH(LMH, false, 1489, minHorizontal, maxHorizontal);
+Servo sLMH(LMH, false, 1500, minHorizontal, maxHorizontal);
 
 Servo sLBK(LBK, true, 1540, minKnee, maxKnee);
 Servo sLBV(LBV, false, 1488, minVertical, maxVertical);
-Servo sLBH(LBH, false, 1406, minHorizontal, maxHorizontal);
+Servo sLBH(LBH, false, 1327, minHorizontal, maxHorizontal);
 
 
 // 113.5 is HIPWIDTH + FEMURLENGTH

@@ -34,13 +34,30 @@ int whichServo = servoKnee;
 Leg *selectedLeg = &lLF;
 Servo *selectedServo = &sLFK;
 
+int step = 5;
 
 void loop()
 {
   switch (Command)
   {
     case codeOK:
-      SetRobotPosition0(0);     // Start in "natural" pose.
+      SetRobotPosition0(800);     // Start in "natural" pose.
+      break;
+
+    case codeLeft:
+      HipCCW45();
+      break;
+
+    case codeRight:
+      HipCW45();
+      break;
+
+    case codeUp:
+      IncreaseStep();
+      break;
+
+    case codeDown:
+      DecreaseStep();
       break;
 
     case code1:
@@ -88,6 +105,25 @@ void loop()
   delay(100);
 }
 
+void IncreaseStep()
+{
+  if (step < 10)
+  {
+    step++;
+  }
+  Serial.println("Angle Step " + String(step));
+  delay(200);
+}
+
+void DecreaseStep()
+{
+  if (step > 1)
+  {
+    step--;
+  }
+  Serial.println("Angle Step " + String(step));
+  delay(200);
+}
 
 void SelectLeg(Leg *leg)
 {
@@ -132,7 +168,7 @@ void SelectServo(int whichServoIn)
 void ServoMinus()
 {
   float angle = selectedServo->GetAngle();
-  selectedServo->SetAngle(angle - 1.0, 20);
+  selectedServo->SetAngle(angle - float(step), 20);
 }
 
 
@@ -145,7 +181,18 @@ void ServoNatural()
 void ServoPlus()
 {
   float angle = selectedServo->GetAngle();
-  selectedServo->SetAngle(angle + 1.0, 20);
+  selectedServo->SetAngle(angle + float(step), 20);
+}
+
+
+void HipCW45()
+{
+  selectedLeg->Horizontal()->SetAngle(45.0, 800);
+}
+
+void HipCCW45()
+{
+  selectedLeg->Horizontal()->SetAngle(-45.0, 800);
 }
 
 
