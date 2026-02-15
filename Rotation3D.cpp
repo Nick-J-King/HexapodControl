@@ -4,6 +4,12 @@
 #include "Utils.h"
 
 
+float Length3D(float x, float y, float z)
+{
+  return sqrt(x * x + y * y + z * z);
+}
+
+
 // Assume x,y,z is a 3x1 column matrix, and matrix m is 3x3.
 // Return matrix * (x,y,z)
 void Multiply3D(Matrix3D *m, float x, float y, float z, float *xOut, float *yOut, float *zOut)

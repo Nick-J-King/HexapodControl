@@ -1,5 +1,9 @@
 // Rotation3D.h
 
+#ifndef Rotation3D_h
+#define Rotation3D_h
+
+
 // Matrix entries: m[row][col]
 struct Matrix3D
 {
@@ -14,5 +18,13 @@ struct Matrix3D
   float m22;
 };
 
+
+float Length3D(float x, float y, float z);
+
+void Multiply3D(Matrix3D *m, float x, float y, float z, float *xOut, float *yOut, float *zOut);
+void NormaliseXYZ(float *x, float *y, float *z);
+void Construct3DRotationMatrix(Matrix3D *m, float x, float y, float z, float angle);
+
+#endif // Rotation3D_h
 
 // END //

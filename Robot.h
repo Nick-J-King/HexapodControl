@@ -6,6 +6,7 @@
 #include "Utils.h"
 #include "WakeUp.h"
 #include "Walk.h"
+#include "Rotation3D.h"
 #include "Kinematics.h"
 
 
