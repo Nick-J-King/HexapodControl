@@ -18,8 +18,22 @@ void setup()
   Serial.begin(115200);
   delay(1000);
 
-  SetRobotAxisAndRotation(0.0, 0.0, 1.0, 10.0);
-    // Start off trying a 10 degree about z-axis...
+    // Start off trying a +ve 10 degree about z-axis...
+    // This makes legs all go 10 degrees CCW (looking from the top).
+    // Looking along the +ve z axis (down) this is CCW.
+    //
+    // Now try a +ve 10 degree about y-axis...
+    // This makes left legs go down, right legs go up.
+    // Looking along +ve y axis (forward), this is CCW.
+    //
+    // Now try a +ve 10 degree about x-axis...
+    // This makes front legs go down, back legs come up.
+    // Looking along +ve x axis (right), this is CCW.
+    //
+    // So the body moves the other way: CW is positive for the body.
+    // I like it that way! The rotation axis refers to the centre of the robot.
+
+  SetRobotAxisAndRotation(0.0, 0.0, 1.0, 0.0);  // Start with neutral rotation.
 
   SetRobotPosition0(0);     // Start in "natural" pose.
 
@@ -60,6 +74,22 @@ void loop()
     
     case code5:
       SetRobotKickIn(700);
+      break;
+ 
+    case code6:
+      // ONE MORE EXERCISE TO MAKE UP!!!
+      break;
+
+    case code7:
+      YawTest();
+      break;
+ 
+    case code8:
+      PitchTest();
+      break;
+ 
+    case code9:
+      RollTest();
       break;
  
     case codeUp:
@@ -272,6 +302,107 @@ void FeetDown(int Time)
   lLF.SetFootDelta(0.0, 0.0, 5.0, Time);
   lLM.SetFootDelta(0.0, 0.0, 5.0, Time);
   lLB.SetFootDelta(0.0, 0.0, 5.0, Time);
+}
+
+// Starting from natural, twist one way, then come back and twist the other, then return to normal.
+void YawTest()
+{
+  SetRobotAxisAndRotation(0.0, 0.0, 1.0, 0.0);  // Start with neutral rotation.
+  SetRobotPosition0(100);     // Start in "natural" pose.
+
+  float angle = 1.0;
+
+  for (angle = 1.0; angle <= 25.0; angle += 1.0)
+  {
+    SetRobotAxisAndRotation(0.0, 0.0, 1.0, angle);  // Start with neutral rotation.
+    SetRobotPosition0(100);     // Start in "natural" pose.
+  }
+  delay(1000);
+  for (; angle >= -25.0; angle -= 1.0)
+  {
+    SetRobotAxisAndRotation(0.0, 0.0, 1.0, angle);
+    SetRobotPosition0(100);
+  }
+  delay(1000);
+
+  for (; angle < 0.0; angle += 1.0)
+  {
+    SetRobotAxisAndRotation(0.0, 0.0, 1.0, angle);
+    SetRobotPosition0(100);
+  }
+  delay(120);
+
+  SetRobotAxisAndRotation(0.0, 0.0, 1.0, 0.0);  // End with neutral rotation.
+  SetRobotPosition0(100);     // End in "natural" pose.
+  delay(500);
+}
+
+
+// Starting from natural, tip one way, then come back and tip the other, then return to normal.
+void PitchTest()
+{
+  SetRobotAxisAndRotation(1.0, 0.0, 0.0, 0.0);  // Start with neutral rotation.
+  SetRobotPosition0(100);     // Start in "natural" pose.
+
+  float angle = 1.0;
+
+  for (angle = 1.0; angle <= 25.0; angle += 1.0)
+  {
+    SetRobotAxisAndRotation(1.0, 0.0, 0.0, angle);  // Start with neutral rotation.
+    SetRobotPosition0(100);     // Start in "natural" pose.
+  }
+  delay(1000);
+  for (; angle >= -25.0; angle -= 1.0)
+  {
+    SetRobotAxisAndRotation(1.0, 0.0, 0.0, angle);
+    SetRobotPosition0(100);
+  }
+  delay(1000);
+
+  for (; angle < 0.0; angle += 1.0)
+  {
+    SetRobotAxisAndRotation(1.0, 0.0, 0.0, angle);
+    SetRobotPosition0(100);
+  }
+  delay(120);
+
+  SetRobotAxisAndRotation(1.0, 0.0, 0.0, 0.0);  // End with neutral rotation.
+  SetRobotPosition0(100);     // End in "natural" pose.
+  delay(500);
+}
+
+
+// Starting from natural, tip one way, then come back and tip the other, then return to normal.
+void RollTest()
+{
+  SetRobotAxisAndRotation(0.0, 1.0, 0.0, 0.0);  // Start with neutral rotation.
+  SetRobotPosition0(100);     // Start in "natural" pose.
+
+  float angle = 1.0;
+
+  for (angle = 1.0; angle <= 25.0; angle += 1.0)
+  {
+    SetRobotAxisAndRotation(0.0, 1.0, 0.0, angle);  // Start with neutral rotation.
+    SetRobotPosition0(100);     // Start in "natural" pose.
+  }
+  delay(1000);
+  for (; angle >= -25.0; angle -= 1.0)
+  {
+    SetRobotAxisAndRotation(0.0, 1.0, 0.0, angle);
+    SetRobotPosition0(100);
+  }
+  delay(1000);
+
+  for (; angle < 0.0; angle += 1.0)
+  {
+    SetRobotAxisAndRotation(0.0, 1.0, 0.0, angle);
+    SetRobotPosition0(100);
+  }
+  delay(120);
+
+  SetRobotAxisAndRotation(0.0, 1.0, 0.0, 0.0);  // End with neutral rotation.
+  SetRobotPosition0(100);     // End in "natural" pose.
+  delay(500);
 }
 
 

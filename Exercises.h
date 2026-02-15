@@ -18,5 +18,9 @@ void SetRobotTwirlCCW(int Time);
 void SetRobotKickOut(int Time);
 void SetRobotKickIn(int Time);
 
+void YawTest();
+void PitchTest();
+void RollTest();
+
 
 // END //
