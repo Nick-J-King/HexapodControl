@@ -78,38 +78,38 @@ extern float robotRotation;
 #define TIBIALENGTH 125.0
 
 
-extern Servo sRFK;
-extern Servo sRFV;
-extern Servo sRFH;
+extern Servo servoRFK;
+extern Servo servoRFV;
+extern Servo servoRFH;
 
-extern Servo sRMK;
-extern Servo sRMV;
-extern Servo sRMH;
+extern Servo servoRMK;
+extern Servo servoRMV;
+extern Servo servoRMH;
 
-extern Servo sRBK;
-extern Servo sRBV;
-extern Servo sRBH;
-
-
-extern Servo sLFK;
-extern Servo sLFV;
-extern Servo sLFH;
-
-extern Servo sLMK;
-extern Servo sLMV;
-extern Servo sLMH;
-
-extern Servo sLBK;
-extern Servo sLBV;
-extern Servo sLBH;
+extern Servo servoRBK;
+extern Servo servoRBV;
+extern Servo servoRBH;
 
 
-extern Leg lLF;
-extern Leg lRF;
-extern Leg lRM;
-extern Leg lRB;
-extern Leg lLB;
-extern Leg lLM;
+extern Servo servoLFK;
+extern Servo servoLFV;
+extern Servo servoLFH;
+
+extern Servo servoLMK;
+extern Servo servoLMV;
+extern Servo servoLMH;
+
+extern Servo servoLBK;
+extern Servo servoLBV;
+extern Servo servoLBH;
+
+
+extern Leg legLF;
+extern Leg legRF;
+extern Leg legRM;
+extern Leg legRB;
+extern Leg legLB;
+extern Leg legLM;
 
 
 void NaturalAll(int Time);  // Set robot to "natural" position.

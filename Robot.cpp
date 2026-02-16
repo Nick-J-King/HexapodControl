@@ -27,39 +27,39 @@ float robotRotation;
 #define maxHorizontal 50.0
 
 
-Servo sRFK(RFK, false, 1457, minKnee, maxKnee);
-Servo sRFV(RFV, true, 1439, minVertical, maxVertical);
-Servo sRFH(RFH, false, 1492, minHorizontal, maxHorizontal);
+Servo servoRFK(RFK, false, 1457, minKnee, maxKnee);
+Servo servoRFV(RFV, true, 1439, minVertical, maxVertical);
+Servo servoRFH(RFH, false, 1492, minHorizontal, maxHorizontal);
 // Horizontal PWM Forward: 990
 // Horizontal PWM Side: 1994
 // Calculated 45
 
-Servo sRMK(RMK, false, 1590, minKnee, maxKnee);
-Servo sRMV(RMV, true, 1529, minVertical, maxVertical);
-Servo sRMH(RMH, false, 1546, minHorizontal, maxHorizontal); // Calibrated by straight line.
+Servo servoRMK(RMK, false, 1590, minKnee, maxKnee);
+Servo servoRMV(RMV, true, 1529, minVertical, maxVertical);
+Servo servoRMH(RMH, false, 1546, minHorizontal, maxHorizontal); // Calibrated by straight line.
 
-Servo sRBK(RBK, false, 1420, minKnee, maxKnee);  //*
-Servo sRBV(RBV, true, 1536, minVertical, maxVertical);
-Servo sRBH(RBH, false, 1548, minHorizontal, maxHorizontal); //*
+Servo servoRBK(RBK, false, 1420, minKnee, maxKnee);  //*
+Servo servoRBV(RBV, true, 1536, minVertical, maxVertical);
+Servo servoRBH(RBH, false, 1548, minHorizontal, maxHorizontal); //*
 // Horizontal PWM Forward: 2044
 // Horizontal PWM Side: 1052
 // Calculated 45
 
 
-Servo sLFK(LFK, true, 1583, minKnee, maxKnee);
-Servo sLFV(LFV, false, 1404, minVertical, maxVertical); //*
-Servo sLFH(LFH, false, 1585, minHorizontal, maxHorizontal);
+Servo servoLFK(LFK, true, 1583, minKnee, maxKnee);
+Servo servoLFV(LFV, false, 1404, minVertical, maxVertical); //*
+Servo servoLFH(LFH, false, 1585, minHorizontal, maxHorizontal);
 // Horizontal PWM Forward: 2075
 // Horizontal PWM Side: 1096
 // Calculated 45
 
-Servo sLMK(LMK, true, 1435, minKnee, maxKnee);
-Servo sLMV(LMV, false, 1466, minVertical, maxVertical);
-Servo sLMH(LMH, false, 1511, minHorizontal, maxHorizontal); // Calibrated by straight line.
+Servo servoLMK(LMK, true, 1435, minKnee, maxKnee);
+Servo servoLMV(LMV, false, 1466, minVertical, maxVertical);
+Servo servoLMH(LMH, false, 1511, minHorizontal, maxHorizontal); // Calibrated by straight line.
 
-Servo sLBK(LBK, true, 1516, minKnee, maxKnee);
-Servo sLBV(LBV, false, 1493, minVertical, maxVertical);
-Servo sLBH(LBH, false, 1484, minHorizontal, maxHorizontal); //*
+Servo servoLBK(LBK, true, 1516, minKnee, maxKnee);
+Servo servoLBV(LBV, false, 1493, minVertical, maxVertical);
+Servo servoLBH(LBH, false, 1484, minHorizontal, maxHorizontal); //*
 // Horizontal PWM Forward: 994
 // Horizontal PWM Side: 1975
 // Calculated 45 - (1484) This hip has a dodgy servo.
@@ -85,13 +85,13 @@ Servo sLBH(LBH, false, 1484, minHorizontal, maxHorizontal); //*
 #define Z TIBIALENGTH
 
 // Give the leg the postion in frame, the servos, the natural angle of leg, and natural position of the feet.
-Leg legRF(XPOS, YPOS, &sRFK, &sRFV, &sRFH, 45.0, RX, FY, Z);
-Leg legRM(XPOSM, 0, &sRMK, &sRMV, &sRMH, 90.0, RMX, MY, Z);
-Leg legRB(XPOS, -YPOS, &sRBK, &sRBV, &sRBH, 135.0, RX, BY, Z);
+Leg legRF(XPOS, YPOS, &servoRFK, &servoRFV, &servoRFH, 45.0, RX, FY, Z);
+Leg legRM(XPOSM, 0, &servoRMK, &servoRMV, &servoRMH, 90.0, RMX, MY, Z);
+Leg legRB(XPOS, -YPOS, &servoRBK, &servoRBV, &servoRBH, 135.0, RX, BY, Z);
 
-Leg legLB(-XPOS, -YPOS, &sLBK, &sLBV, &sLBH, -135.0, LX, BY, Z);
-Leg legLM(-XPOSM, 0, &sLMK, &sLMV, &sLMH, -90.0, LMX, MY, Z);
-Leg legLF(-XPOS, YPOS, &sLFK, &sLFV, &sLFH, -45.0, LX, FY, Z);
+Leg legLB(-XPOS, -YPOS, &servoLBK, &servoLBV, &servoLBH, -135.0, LX, BY, Z);
+Leg legLM(-XPOSM, 0, &servoLMK, &servoLMV, &servoLMH, -90.0, LMX, MY, Z);
+Leg legLF(-XPOS, YPOS, &servoLFK, &servoLFV, &servoLFH, -45.0, LX, FY, Z);
 
 
 void SetRobotAxisAndRotation(float x, float y, float z, float angle)

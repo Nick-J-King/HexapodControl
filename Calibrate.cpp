@@ -50,8 +50,8 @@ volatile uint8_t Command = 0;
 #define servoHorizontal 2
 
 int whichServo = servoKnee;
-Leg *selectedLeg = &lLF;
-Servo *selectedServo = &sLFK;
+Leg *selectedLeg = &legLF;
+Servo *selectedServo = &servoLFK;
 
 String legName = "Left Front";
 String servoName = "Knee";
@@ -83,32 +83,32 @@ void loop()
       break;
 
     case code1:
-      SelectLeg(&lLF);
+      SelectLeg(&legLF);
       legName = "Left Front";
       Serial.println("Selected Left Front leg");
       break;
     case code4:
-      SelectLeg(&lLM);
+      SelectLeg(&legLM);
       legName = "Left Middle";
       Serial.println("Selected Left Middle leg");
       break;
     case code7:
-      SelectLeg(&lLB);
+      SelectLeg(&legLB);
       legName = "Left Back";
       Serial.println("Selected Left Back leg");
       break;
     case code2:
-      SelectLeg(&lRF);
+      SelectLeg(&legRF);
       legName = "Right Front";
       Serial.println("Selected Right Front leg");
       break;
     case code5:
-      SelectLeg(&lRM);
+      SelectLeg(&legRM);
       legName = "Right Middle";
       Serial.println("Selected Right Middle leg");
       break;
     case code8:
-      SelectLeg(&lRB);
+      SelectLeg(&legRB);
       legName = "Right Back";
       Serial.println("Selected Right Back leg");
       break;
@@ -146,12 +146,12 @@ void loop()
 void StartForUpsideDown(int Time)
 {
   // Leave the knees pliant to start with. This makes calibrating the vertical servos easier.
-  lLF.SetServoAngles(0.0, 0.0, 0.0, Time);
-  lLM.SetServoAngles(0.0, 0.0, 0.0, Time);
-  lLB.SetServoAngles(0.0, 0.0, 0.0, Time);
-  lRF.SetServoAngles(0.0, 0.0, 0.0, Time);
-  lRM.SetServoAngles(0.0, 0.0, 0.0, Time);
-  lRB.SetServoAngles(0.0, 0.0, 0.0, Time);
+  legLF.SetServoAngles(0.0, 0.0, 0.0, Time);
+  legLM.SetServoAngles(0.0, 0.0, 0.0, Time);
+  legLB.SetServoAngles(0.0, 0.0, 0.0, Time);
+  legRF.SetServoAngles(0.0, 0.0, 0.0, Time);
+  legRM.SetServoAngles(0.0, 0.0, 0.0, Time);
+  legRB.SetServoAngles(0.0, 0.0, 0.0, Time);
 }
 
 
