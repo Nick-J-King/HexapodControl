@@ -35,24 +35,24 @@ void WalkLoop()
 void SetRobotPosition0(int Time)
 {
   /*
-  lRF.SetNatural(Time);
-  lRM.SetNatural(Time);
-  lRB.SetNatural(Time);
+  legRF.SetNatural(Time);
+  legRM.SetNatural(Time);
+  legRB.SetNatural(Time);
   
-  lLF.SetNatural(Time);
-  lLM.SetNatural(Time);
-  lLB.SetNatural(Time);
+  legLF.SetNatural(Time);
+  legLM.SetNatural(Time);
+  legLB.SetNatural(Time);
   */
   
   // Right
-  lRF.SetFootNatural(0.0, 0.0, 0.0, Time); // A
-  lRM.SetFootNatural(0.0, 0.0, 0.0, Time);
-  lRB.SetFootNatural(0.0, 0.0, 0.0, Time); // A
+  legRF.SetFootNatural(0.0, 0.0, 0.0, Time); // A
+  legRM.SetFootNatural(0.0, 0.0, 0.0, Time);
+  legRB.SetFootNatural(0.0, 0.0, 0.0, Time); // A
 
   // Left
-  lLF.SetFootNatural(0.0, 0.0, 0.0, Time);
-  lLM.SetFootNatural(0.0, 0.0, 0.0, Time); // A
-  lLB.SetFootNatural(0.0, 0.0, 0.0, Time);
+  legLF.SetFootNatural(0.0, 0.0, 0.0, Time);
+  legLM.SetFootNatural(0.0, 0.0, 0.0, Time); // A
+  legLB.SetFootNatural(0.0, 0.0, 0.0, Time);
 }
 
 
@@ -67,14 +67,14 @@ void SetRobotPosition0(int Time)
 void SetRobotPosition1(int Time)
 {
   // Right
-  lRF.SetFootNatural(0.0, 0.0, Z1, Time); // A
-  lRM.SetFootNatural(0.0, 0.0, Z0, Time);
-  lRB.SetFootNatural(0.0, 0.0, Z1, Time); // A
+  legRF.SetFootNatural(0.0, 0.0, Z1, Time); // A
+  legRM.SetFootNatural(0.0, 0.0, Z0, Time);
+  legRB.SetFootNatural(0.0, 0.0, Z1, Time); // A
 
   // Left
-  lLF.SetFootNatural(0.0, 0.0, Z0, Time);
-  lLM.SetFootNatural(0.0, 0.0, Z1, Time); // A
-  lLB.SetFootNatural(0.0, 0.0, Z0, Time);
+  legLF.SetFootNatural(0.0, 0.0, Z0, Time);
+  legLM.SetFootNatural(0.0, 0.0, Z1, Time); // A
+  legLB.SetFootNatural(0.0, 0.0, Z0, Time);
 }
 
 
@@ -82,14 +82,14 @@ void SetRobotPosition1(int Time)
 void SetRobotPosition2(int Time)
 {
   // Right
-  lRF.SetFootNatural(0.0, S, Z2, Time); // A
-  lRM.SetFootNatural(0.0, -S, Z0, Time);
-  lRB.SetFootNatural(0.0, S, Z2, Time); // A
+  legRF.SetFootNatural(0.0, S, Z2, Time); // A
+  legRM.SetFootNatural(0.0, -S, Z0, Time);
+  legRB.SetFootNatural(0.0, S, Z2, Time); // A
 
   // Left
-  lLF.SetFootNatural(0.0, -S, Z0, Time);
-  lLM.SetFootNatural(0.0, S, Z2, Time); // A
-  lLB.SetFootNatural(0.0, -S, Z0, Time);
+  legLF.SetFootNatural(0.0, -S, Z0, Time);
+  legLM.SetFootNatural(0.0, S, Z2, Time); // A
+  legLB.SetFootNatural(0.0, -S, Z0, Time);
 }
 
 
@@ -97,14 +97,14 @@ void SetRobotPosition2(int Time)
 void SetRobotPosition3(int Time)
 {
   // Right
-  lRF.SetFootNatural(0.0, S, Z0, Time);  // A
-  lRM.SetFootNatural(0.0, -S, Z0, Time);
-  lRB.SetFootNatural(0.0, S, Z0, Time);  // A
+  legRF.SetFootNatural(0.0, S, Z0, Time);  // A
+  legRM.SetFootNatural(0.0, -S, Z0, Time);
+  legRB.SetFootNatural(0.0, S, Z0, Time);  // A
 
   // Left
-  lLF.SetFootNatural(0.0, -S, Z0, Time);
-  lLM.SetFootNatural(0.0, S, Z0, Time);  // A
-  lLB.SetFootNatural(0.0, -S, Z0, Time);
+  legLF.SetFootNatural(0.0, -S, Z0, Time);
+  legLM.SetFootNatural(0.0, S, Z0, Time);  // A
+  legLB.SetFootNatural(0.0, -S, Z0, Time);
 }
 
 
@@ -112,14 +112,14 @@ void SetRobotPosition3(int Time)
 void SetRobotPosition4(int Time)
 {
   // Right
-  lRF.SetFootNatural(0.0, S, Z0, Time);  // A
-  lRM.SetFootNatural(0.0, -S, Z1, Time);
-  lRB.SetFootNatural(0.0, S, Z0, Time);  // A
+  legRF.SetFootNatural(0.0, S, Z0, Time);  // A
+  legRM.SetFootNatural(0.0, -S, Z1, Time);
+  legRB.SetFootNatural(0.0, S, Z0, Time);  // A
 
   // Left
-  lLF.SetFootNatural(0.0, -S, Z1, Time);
-  lLM.SetFootNatural(0.0, S, Z0, Time);  // A
-  lLB.SetFootNatural(0.0, -S, Z1, Time);
+  legLF.SetFootNatural(0.0, -S, Z1, Time);
+  legLM.SetFootNatural(0.0, S, Z0, Time);  // A
+  legLB.SetFootNatural(0.0, -S, Z1, Time);
 }
 
 
@@ -127,14 +127,14 @@ void SetRobotPosition4(int Time)
 void SetRobotPosition5(int Time)
 {
   // Right
-  lRF.SetFootNatural(0.0, -S, Z0, Time); // A
-  lRM.SetFootNatural(0.0, S, Z2, Time);
-  lRB.SetFootNatural(0.0, -S, Z0, Time); // A
+  legRF.SetFootNatural(0.0, -S, Z0, Time); // A
+  legRM.SetFootNatural(0.0, S, Z2, Time);
+  legRB.SetFootNatural(0.0, -S, Z0, Time); // A
 
   // Left
-  lLF.SetFootNatural(0.0, S, Z2, Time);
-  lLM.SetFootNatural(0.0, -S, Z0, Time); // A
-  lLB.SetFootNatural(0.0, S, Z2, Time);
+  legLF.SetFootNatural(0.0, S, Z2, Time);
+  legLM.SetFootNatural(0.0, -S, Z0, Time); // A
+  legLB.SetFootNatural(0.0, S, Z2, Time);
 }
 
 
@@ -142,14 +142,14 @@ void SetRobotPosition5(int Time)
 void SetRobotPosition6(int Time)
 {
   // Right
-  lRF.SetFootNatural(0.0, -S, Z0, Time); // A
-  lRM.SetFootNatural(0.0, S, Z0, Time);
-  lRB.SetFootNatural(0.0, -S, Z0, Time); // A
+  legRF.SetFootNatural(0.0, -S, Z0, Time); // A
+  legRM.SetFootNatural(0.0, S, Z0, Time);
+  legRB.SetFootNatural(0.0, -S, Z0, Time); // A
 
   // Left
-  lLF.SetFootNatural(0.0, S, Z0, Time);
-  lLM.SetFootNatural(0.0, -S, Z0, Time); // A
-  lLB.SetFootNatural(0.0, S, Z0, Time);
+  legLF.SetFootNatural(0.0, S, Z0, Time);
+  legLM.SetFootNatural(0.0, -S, Z0, Time); // A
+  legLB.SetFootNatural(0.0, S, Z0, Time);
 }
 
 
@@ -157,14 +157,14 @@ void SetRobotPosition6(int Time)
 void SetRobotPosition7(int Time)
 {
   // Right
-  lRF.SetFootNatural(0.0, -S, Z1, Time); // A
-  lRM.SetFootNatural(0.0, S, Z0, Time);
-  lRB.SetFootNatural(0.0, -S, Z1, Time); // A
+  legRF.SetFootNatural(0.0, -S, Z1, Time); // A
+  legRM.SetFootNatural(0.0, S, Z0, Time);
+  legRB.SetFootNatural(0.0, -S, Z1, Time); // A
 
   // Left
-  lLF.SetFootNatural(0.0, S, Z0, Time);
-  lLM.SetFootNatural(0.0, -S, Z1, Time); // A
-  lLB.SetFootNatural(0.0, S, Z0, Time);
+  legLF.SetFootNatural(0.0, S, Z0, Time);
+  legLM.SetFootNatural(0.0, -S, Z1, Time); // A
+  legLB.SetFootNatural(0.0, S, Z0, Time);
 }
 
 

@@ -62,8 +62,12 @@ Servo sLBV(LBV, false, 1493, minVertical, maxVertical);
 Servo sLBH(LBH, false, 1484, minHorizontal, maxHorizontal); //*
 // Horizontal PWM Forward: 994
 // Horizontal PWM Side: 1975
-// Calculated 45
-
+// Calculated 45 - (1484) This hip has a dodgy servo.
+// The others front and back horizontal servos liked the calibration technique of
+// averaging the front and side (45 degrees each way) PWM values.
+// This is a dodgy servo. It makes funny clicking noises...
+// Luckily, I have a spare replacement from before. I'll fit that some other day... 
+// For now, just get approximate recal for the 45 degrees...
 
 // 113.5 is HIPWIDTH + FEMURLENGTH
 #define DO 113.5
@@ -81,13 +85,13 @@ Servo sLBH(LBH, false, 1484, minHorizontal, maxHorizontal); //*
 #define Z TIBIALENGTH
 
 // Give the leg the postion in frame, the servos, the natural angle of leg, and natural position of the feet.
-Leg lRF(XPOS, YPOS, &sRFK, &sRFV, &sRFH, 45.0, RX, FY, Z);
-Leg lRM(XPOSM, 0, &sRMK, &sRMV, &sRMH, 90.0, RMX, MY, Z);
-Leg lRB(XPOS, -YPOS, &sRBK, &sRBV, &sRBH, 135.0, RX, BY, Z);
+Leg legRF(XPOS, YPOS, &sRFK, &sRFV, &sRFH, 45.0, RX, FY, Z);
+Leg legRM(XPOSM, 0, &sRMK, &sRMV, &sRMH, 90.0, RMX, MY, Z);
+Leg legRB(XPOS, -YPOS, &sRBK, &sRBV, &sRBH, 135.0, RX, BY, Z);
 
-Leg lLB(-XPOS, -YPOS, &sLBK, &sLBV, &sLBH, -135.0, LX, BY, Z);
-Leg lLM(-XPOSM, 0, &sLMK, &sLMV, &sLMH, -90.0, LMX, MY, Z);
-Leg lLF(-XPOS, YPOS, &sLFK, &sLFV, &sLFH, -45.0, LX, FY, Z);
+Leg legLB(-XPOS, -YPOS, &sLBK, &sLBV, &sLBH, -135.0, LX, BY, Z);
+Leg legLM(-XPOSM, 0, &sLMK, &sLMV, &sLMH, -90.0, LMX, MY, Z);
+Leg legLF(-XPOS, YPOS, &sLFK, &sLFV, &sLFH, -45.0, LX, FY, Z);
 
 
 void SetRobotAxisAndRotation(float x, float y, float z, float angle)
@@ -104,24 +108,24 @@ void SetRobotAxisAndRotation(float x, float y, float z, float angle)
 
 void NaturalAll(int Time)
 {
-  lLF.SetNatural(Time);
-  lLM.SetNatural(Time);
-  lLB.SetNatural(Time);
-  lRF.SetNatural(Time);
-  lRM.SetNatural(Time);
-  lRB.SetNatural(Time);
+  legLF.SetNatural(Time);
+  legLM.SetNatural(Time);
+  legLB.SetNatural(Time);
+  legRF.SetNatural(Time);
+  legRM.SetNatural(Time);
+  legRB.SetNatural(Time);
 }
 
 
 // Centre all servos on PWM ABSOLUTE_MIDDLE.
 void CenterAll(int Time)
 {
-  lLF.SetCenter(Time);
-  lLM.SetCenter(Time);
-  lLB.SetCenter(Time);
-  lRF.SetCenter(Time);
-  lRM.SetCenter(Time);
-  lRB.SetCenter(Time);
+  legLF.SetCenter(Time);
+  legLM.SetCenter(Time);
+  legLB.SetCenter(Time);
+  legRF.SetCenter(Time);
+  legRM.SetCenter(Time);
+  legRB.SetCenter(Time);
 }
 
 
@@ -132,12 +136,12 @@ void ReportRobot()
 {
   P("\nReport Robot status");
 
-//  lLF.ReportLeg("Left Front");
-//  lLM.ReportLeg("Left Middle");
-//  lLB.ReportLeg("Left Back");
-  lRF.ReportLeg("Right Front");
-//  lRM.ReportLeg("Right Middle");
-//  lRB.ReportLeg("Right Back");
+//  legLF.ReportLeg("Left Front");
+//  legLM.ReportLeg("Left Middle");
+//  legLB.ReportLeg("Left Back");
+  legRF.ReportLeg("Right Front");
+//  legRM.ReportLeg("Right Middle");
+//  legRB.ReportLeg("Right Back");
 }
 
 

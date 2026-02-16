@@ -25,15 +25,15 @@ void RunDebugChecks()
   TestKinematics();
 
   P("\nSet right front foot delta 10,20,30");
-  lRF.SetFootDelta(10.0, 20.0, 30.0, 0);
+  legRF.SetFootDelta(10.0, 20.0, 30.0, 0);
   ReportRobot();
 
   P("\nSet right front hip servo to 0 degrees");
-  lRF.Horizontal()->SetAngle(0.0, 0);
+  legRF.Horizontal()->SetAngle(0.0, 0);
   ReportRobot();
 
   P("\nSet right front foot delta -10,-20,-30");
-  lRF.SetFootDelta(-10.0, -20.0, -30.0, 0);
+  legRF.SetFootDelta(-10.0, -20.0, -30.0, 0);
   ReportRobot();
 */
 

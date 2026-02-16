@@ -12,11 +12,10 @@ void FeetRight(int Time);
 void FeetUp(int Time);
 void FeetDown(int Time);
 
-void SetRobotTwirlCW(int Time);
-void SetRobotTwirlCCW(int Time);
-
-void SetRobotKickOut(int Time);
-void SetRobotKickIn(int Time);
+void StepForward();
+void StepBackward();
+void StepLeft();
+void StepRight();
 
 void YawTest();
 void PitchTest();

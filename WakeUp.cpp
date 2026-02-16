@@ -33,99 +33,99 @@ void StandUp()
   float Z2 = -TIBIALENGTH + 20;
   
   // Right
-  lRF.SetFootNatural(0.0, 0, Z0, Time); // A
-  lRM.SetFootNatural(0.0, 0, Z0, Time);
-  lRB.SetFootNatural(0.0, 0, Z0, Time); // A
+  legRF.SetFootNatural(0.0, 0, Z0, Time); // A
+  legRM.SetFootNatural(0.0, 0, Z0, Time);
+  legRB.SetFootNatural(0.0, 0, Z0, Time); // A
 
   // Left
-  lLF.SetFootNatural(0.0, 0, Z0, Time);
-  lLM.SetFootNatural(0.0, 0, Z0, Time); // A
-  lLB.SetFootNatural(0.0, 0, Z0, Time);
+  legLF.SetFootNatural(0.0, 0, Z0, Time);
+  legLM.SetFootNatural(0.0, 0, Z0, Time); // A
+  legLB.SetFootNatural(0.0, 0, Z0, Time);
 
   WaitForServos();
 
     // Right
-  lRF.SetFootNatural(0.0, 0, Z1, Time1); // A
-  lRM.SetFootNatural(0.0, 0, Z1, Time1);
-  lRB.SetFootNatural(0.0, 0, Z1, Time1); // A
+  legRF.SetFootNatural(0.0, 0, Z1, Time1); // A
+  legRM.SetFootNatural(0.0, 0, Z1, Time1);
+  legRB.SetFootNatural(0.0, 0, Z1, Time1); // A
 
   // Left
-  lLF.SetFootNatural(0.0, 0, Z1, Time1);
-  lLM.SetFootNatural(0.0, 0, Z1, Time1); // A
-  lLB.SetFootNatural(0.0, 0, Z1, Time1);
+  legLF.SetFootNatural(0.0, 0, Z1, Time1);
+  legLM.SetFootNatural(0.0, 0, Z1, Time1); // A
+  legLB.SetFootNatural(0.0, 0, Z1, Time1);
 
   WaitForServos();
     
   // Right
-  lRF.SetFootNatural(0.0, 0, Z0, Time); // A
-  lRM.SetFootNatural(0.0, 0, Z0, Time);
-  lRB.SetFootNatural(0.0, 0, Z0, Time); // A
+  legRF.SetFootNatural(0.0, 0, Z0, Time); // A
+  legRM.SetFootNatural(0.0, 0, Z0, Time);
+  legRB.SetFootNatural(0.0, 0, Z0, Time); // A
 
   // Left
-  lLF.SetFootNatural(0.0, 0, Z0, Time);
-  lLM.SetFootNatural(0.0, 0, Z0, Time); // A
-  lLB.SetFootNatural(0.0, 0, Z0, Time);
+  legLF.SetFootNatural(0.0, 0, Z0, Time);
+  legLM.SetFootNatural(0.0, 0, Z0, Time); // A
+  legLB.SetFootNatural(0.0, 0, Z0, Time);
 
   WaitForServos();
   
     // Right
-  lRF.SetFootNatural(0.0, 0, -Z1, Time1); // A
-  lRM.SetFootNatural(0.0, 0, -Z1, Time1);
-  lRB.SetFootNatural(0.0, 0, -Z1, Time1); // A
+  legRF.SetFootNatural(0.0, 0, -Z1, Time1); // A
+  legRM.SetFootNatural(0.0, 0, -Z1, Time1);
+  legRB.SetFootNatural(0.0, 0, -Z1, Time1); // A
 
   // Left
-  lLF.SetFootNatural(0.0, 0, -Z1, Time1);
-  lLM.SetFootNatural(0.0, 0, -Z1, Time1); // A
-  lLB.SetFootNatural(0.0, 0, -Z1, Time1);
+  legLF.SetFootNatural(0.0, 0, -Z1, Time1);
+  legLM.SetFootNatural(0.0, 0, -Z1, Time1); // A
+  legLB.SetFootNatural(0.0, 0, -Z1, Time1);
 
   WaitForServos();
     
   // Right
-  lRF.SetFootNatural(0.0, 0, Z0, Time); // A
-  lRM.SetFootNatural(0.0, 0, Z0, Time);
-  lRB.SetFootNatural(0.0, 0, Z0, Time); // A
+  legRF.SetFootNatural(0.0, 0, Z0, Time); // A
+  legRM.SetFootNatural(0.0, 0, Z0, Time);
+  legRB.SetFootNatural(0.0, 0, Z0, Time); // A
 
   // Left
-  lLF.SetFootNatural(0.0, 0, Z0, Time);
-  lLM.SetFootNatural(0.0, 0, Z0, Time); // A
-  lLB.SetFootNatural(0.0, 0, Z0, Time);
+  legLF.SetFootNatural(0.0, 0, Z0, Time);
+  legLM.SetFootNatural(0.0, 0, Z0, Time); // A
+  legLB.SetFootNatural(0.0, 0, Z0, Time);
 
   WaitForServos();
   
     // Right
-  lRF.SetFootNatural(0.0, 0, Z1, Time1); // A
-  lRM.SetFootNatural(0.0, 0, Z1, Time1);
-  lRB.SetFootNatural(0.0, 0, Z1, Time1); // A
+  legRF.SetFootNatural(0.0, 0, Z1, Time1); // A
+  legRM.SetFootNatural(0.0, 0, Z1, Time1);
+  legRB.SetFootNatural(0.0, 0, Z1, Time1); // A
 
   // Left
-  lLF.SetFootNatural(0.0, 0, Z1, Time1);
-  lLM.SetFootNatural(0.0, 0, Z1, Time1); // A
-  lLB.SetFootNatural(0.0, 0, Z1, Time1);
+  legLF.SetFootNatural(0.0, 0, Z1, Time1);
+  legLM.SetFootNatural(0.0, 0, Z1, Time1); // A
+  legLB.SetFootNatural(0.0, 0, Z1, Time1);
 
   WaitForServos();
 
     // Right
-  lRF.SetFootNatural(0.0, 0, Z2, Time1); // A
-  lRM.SetFootNatural(0.0, 0, Z2, Time1);
-  lRB.SetFootNatural(0.0, 0, Z2, Time1); // A
+  legRF.SetFootNatural(0.0, 0, Z2, Time1); // A
+  legRM.SetFootNatural(0.0, 0, Z2, Time1);
+  legRB.SetFootNatural(0.0, 0, Z2, Time1); // A
 
   // Left
-  lLF.SetFootNatural(0.0, 0, Z2, Time1);
-  lLM.SetFootNatural(0.0, 0, Z2, Time1); // A
-  lLB.SetFootNatural(0.0, 0, Z2, Time1);
+  legLF.SetFootNatural(0.0, 0, Z2, Time1);
+  legLM.SetFootNatural(0.0, 0, Z2, Time1); // A
+  legLB.SetFootNatural(0.0, 0, Z2, Time1);
 }
 
 
 void WakeUp()
 {
-  WakeUpLeg(&lRF);
-  WakeUpLeg(&lLF);
+  WakeUpLeg(&legRF);
+  WakeUpLeg(&legLF);
 
-  WakeUpLeg(&lRB);
-  WakeUpLeg(&lLB);
+  WakeUpLeg(&legRB);
+  WakeUpLeg(&legLB);
   
-  WakeUpLeg(&lRM);
-  WakeUpLeg(&lLM);
+  WakeUpLeg(&legRM);
+  WakeUpLeg(&legLM);
 
   StandUp();
 }
