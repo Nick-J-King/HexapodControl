@@ -2,6 +2,7 @@
 
 #include "Robot.h"
 
+void StartForUpsideDown(int Time);
 
 void IncreaseStep();
 void DecreaseStep();

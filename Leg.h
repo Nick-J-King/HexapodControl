@@ -37,6 +37,7 @@ class Leg
     Servo *Horizontal() { return _Horizontal; }
     
     void SetNatural(int Time);
+    void SetCenter(int Time);
 
     void InvalidateFootPosition() { _FootPositionValid = false; }
     

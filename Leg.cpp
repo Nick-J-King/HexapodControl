@@ -45,6 +45,19 @@ void Leg::SetNatural(int Time)
   _FootPositionValid = true;
 }
 
+void Leg::SetCenter(int Time)
+{
+  //>>> Use function to set all the servos at once...
+  _Knee->SetCenter(Time);
+  _Vertical->SetCenter(Time);
+  _Horizontal->SetCenter(Time);
+
+  _FootXCurrent = UNKNOWN_POSITION;
+  _FootYCurrent = UNKNOWN_POSITION;
+  _FootZCurrent = UNKNOWN_POSITION;
+  
+  _FootPositionValid = false;
+}
 
 // Set foot position relative to "natural" foot position, which is at (0,0,0).
 // This makes keyframing gaits simpler.

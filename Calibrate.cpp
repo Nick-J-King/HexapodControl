@@ -13,6 +13,17 @@
 #include "IRCodes.h"
 
 
+float angleSteps[] =
+{
+  5.0, 4.0, 3.0, 2.0, 1.0, 0.5, 0.4, 0.3, 0.2, 0.1, 0.05, 0.02, 0.01
+};
+
+float angleStepArrayLength = sizeof(angleSteps) / sizeof(angleSteps[0]);
+int angleStepIndex = 0;
+
+float angleStep = angleSteps[angleStepIndex];
+
+
 void setup()
 {
   Serial.begin(115200);
@@ -20,7 +31,13 @@ void setup()
 
   SetRobotAxisAndRotation(0.0, 0.0, 1.0, 0.0);
 
-  SetRobotPosition0(0);     // Start in "natural" pose.
+  //CenterAll(0);     // Start with all servos in ABSOLUTE_MIDDLE postion to get horns right.
+  //NaturalAll(0);    // Start with all servos in "natural" position to check calibration.
+  StartForUpsideDown(1000); // As it turns out, it is easier to calibrate upside down...
+
+  Serial.println("\nStartForUpsideDown\n");
+
+  delay(1000);
 
   // Enables the interrupt generation on change of IR input signal
   initPCIInterruptForTinyReceiver();
@@ -36,14 +53,17 @@ int whichServo = servoKnee;
 Leg *selectedLeg = &lLF;
 Servo *selectedServo = &sLFK;
 
-int step = 5;
+String legName = "Left Front";
+String servoName = "Knee";
+
+String GetServoName() { return legName + " " + servoName; }
 
 void loop()
 {
   switch (Command)
   {
     case codeOK:
-      SetRobotPosition0(800);     // Start in "natural" pose.
+      SetRobotPosition0(800);     // Go to "natural" pose.
       break;
 
     case codeLeft:
@@ -64,31 +84,46 @@ void loop()
 
     case code1:
       SelectLeg(&lLF);
+      legName = "Left Front";
+      Serial.println("Selected Left Front leg");
       break;
     case code4:
       SelectLeg(&lLM);
+      legName = "Left Middle";
+      Serial.println("Selected Left Middle leg");
       break;
     case code7:
       SelectLeg(&lLB);
+      legName = "Left Back";
+      Serial.println("Selected Left Back leg");
       break;
     case code2:
       SelectLeg(&lRF);
+      legName = "Right Front";
+      Serial.println("Selected Right Front leg");
       break;
     case code5:
       SelectLeg(&lRM);
+      legName = "Right Middle";
+      Serial.println("Selected Right Middle leg");
       break;
     case code8:
       SelectLeg(&lRB);
+      legName = "Right Back";
+      Serial.println("Selected Right Back leg");
       break;
 
     case code3:
       SelectServo(servoKnee);
+      servoName = "Knee";
       break;
     case code6:
       SelectServo(servoVertical);
+      servoName = "Vertical";
       break;
     case code9:
       SelectServo(servoHorizontal);
+      servoName = "Horizontal";
       break;
 
     case codeStar:
@@ -104,28 +139,53 @@ void loop()
   }
   
   Command = 0;  // Done the action! Must await further instructions!
-  delay(100);
+  delay(10);
 }
 
-void IncreaseStep()
+
+void StartForUpsideDown(int Time)
 {
-  if (step < 10)
-  {
-    step++;
-  }
-  Serial.println("Angle Step " + String(step));
-  delay(200);
+  // Leave the knees pliant to start with. This makes calibrating the vertical servos easier.
+  lLF.SetServoAngles(UNKNOWN_ANGLE, -5.0, 0.0, Time);
+  lLM.SetServoAngles(UNKNOWN_ANGLE, -5.0, 0.0, Time);
+  lLB.SetServoAngles(UNKNOWN_ANGLE, -5.0, 0.0, Time);
+  lRF.SetServoAngles(UNKNOWN_ANGLE, -5.0, 0.0, Time);
+  lRM.SetServoAngles(UNKNOWN_ANGLE, -5.0, 0.0, Time);
+  lRB.SetServoAngles(UNKNOWN_ANGLE, -5.0, 0.0, Time);
 }
+
 
 void DecreaseStep()
 {
-  if (step > 1)
+  angleStepIndex++;
+
+  if (angleStepIndex >= angleStepArrayLength)
   {
-    step--;
+    angleStepIndex = angleStepArrayLength - 1;
   }
-  Serial.println("Angle Step " + String(step));
+
+  angleStep = angleSteps[angleStepIndex];
+
+  Serial.println("Angle Step " + String(angleStep));
   delay(200);
 }
+
+
+void IncreaseStep()
+{
+  angleStepIndex--;
+
+  if (angleStepIndex < 0)
+  {
+    angleStepIndex = 0;
+  }
+
+  angleStep = angleSteps[angleStepIndex];
+
+  Serial.println("Angle Step " + String(angleStep));
+  delay(200);
+}
+
 
 void SelectLeg(Leg *leg)
 {
@@ -144,6 +204,7 @@ void SelectLeg(Leg *leg)
       selectedServo = leg->Horizontal();
       break;
   }
+  delay(200);
 }
 
 
@@ -152,38 +213,60 @@ void SelectServo(int whichServoIn)
   switch (whichServoIn)
   {
     case servoKnee:
+      Serial.println("Selected Knee servo");
       selectedServo = selectedLeg->Knee();
       break;
 
     case servoVertical:
+      Serial.println("Selected Vertical servo");
       selectedServo = selectedLeg->Vertical();
       break;
 
     case servoHorizontal:
+      Serial.println("Selected Horizontal servo");
       selectedServo = selectedLeg->Horizontal();
       break;
   }
   whichServo = whichServoIn;
+  delay(200);
 }
 
 
 void ServoMinus()
 {
   float angle = selectedServo->GetAngle();
-  selectedServo->SetAngle(angle - float(step), 20);
+  if (angle == UNKNOWN_ANGLE)
+  {
+    angle = 0.0;  // The first step from ABSOLUTE_MIDDLE must assume a resonable angle.
+  }
+  selectedServo->SetAngle(angle - angleStep, 20);
+
+  float angleAfter = selectedServo->GetAngle();
+  Serial.println(GetServoName() + " at " + String(angleAfter) + " degrees");
+  delay(400);
 }
 
 
 void ServoNatural()
 {
   selectedServo->SetNatural(500);
+  float angleAfter = selectedServo->GetAngle();
+  Serial.println(GetServoName() + " at " + String(angleAfter) + " degrees");
 }
 
 
 void ServoPlus()
 {
   float angle = selectedServo->GetAngle();
-  selectedServo->SetAngle(angle + float(step), 20);
+  if (angle == UNKNOWN_ANGLE)
+  {
+    angle = 0.0;  // The first step from ABSOLUTE_MIDDLE must assume a resonable angle.
+  }
+  selectedServo->SetAngle(angle + angleStep, 20);
+
+  float angleAfter = selectedServo->GetAngle();
+  Serial.println(GetServoName() + " at " + String(angleAfter) + " degrees");
+  delay(400);
 }
 
 

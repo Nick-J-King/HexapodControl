@@ -26,30 +26,30 @@ float robotRotation;
 #define minHorizontal -45.0
 #define maxHorizontal 45.0
 
-Servo sRFK(RFK, false, 1514, minKnee, maxKnee);
+Servo sRFK(RFK, false, 1446, minKnee, maxKnee);
 Servo sRFV(RFV, true, 1428, minVertical, maxVertical);
 Servo sRFH(RFH, false, 1487, minHorizontal, maxHorizontal);
 
-Servo sRMK(RMK, false, 1523, minKnee, maxKnee);
+Servo sRMK(RMK, false, 1568, minKnee, maxKnee);
 Servo sRMV(RMV, true, 1507, minVertical, maxVertical);
 Servo sRMH(RMH, false, 1535, minHorizontal, maxHorizontal);
 
-Servo sRBK(RBK, false, 1455, minKnee, maxKnee);
+Servo sRBK(RBK, false, 1387, minKnee, maxKnee);  //*
 Servo sRBV(RBV, true, 1531, minVertical, maxVertical);
-Servo sRBH(RBH, false, 1368, minHorizontal, maxHorizontal);
+Servo sRBH(RBH, false, 1368, minHorizontal, maxHorizontal); //*
 
 
-Servo sLFK(LFK, true, 1516, minKnee, maxKnee);
-Servo sLFV(LFV, false, 1427, minVertical, maxVertical);
+Servo sLFK(LFK, true, 1583, minKnee, maxKnee);
+Servo sLFV(LFV, false, 1359, minVertical, maxVertical); //*
 Servo sLFH(LFH, false, 1593, minHorizontal, maxHorizontal);
 
-Servo sLMK(LMK, true, 1469, minKnee, maxKnee);
-Servo sLMV(LMV, false, 1478, minVertical, maxVertical);
+Servo sLMK(LMK, true, 1435, minKnee, maxKnee);
+Servo sLMV(LMV, false, 1455, minVertical, maxVertical);
 Servo sLMH(LMH, false, 1500, minHorizontal, maxHorizontal);
 
-Servo sLBK(LBK, true, 1540, minKnee, maxKnee);
+Servo sLBK(LBK, true, 1528, minKnee, maxKnee);
 Servo sLBV(LBV, false, 1488, minVertical, maxVertical);
-Servo sLBH(LBH, false, 1327, minHorizontal, maxHorizontal);
+Servo sLBH(LBH, false, 1327, minHorizontal, maxHorizontal); //*
 
 
 // 113.5 is HIPWIDTH + FEMURLENGTH
@@ -97,6 +97,18 @@ void NaturalAll(int Time)
   lRF.SetNatural(Time);
   lRM.SetNatural(Time);
   lRB.SetNatural(Time);
+}
+
+
+// Centre all servos on PWM ABSOLUTE_MIDDLE.
+void CenterAll(int Time)
+{
+  lLF.SetCenter(Time);
+  lLM.SetCenter(Time);
+  lLB.SetCenter(Time);
+  lRF.SetCenter(Time);
+  lRM.SetCenter(Time);
+  lRB.SetCenter(Time);
 }
 
 

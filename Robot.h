@@ -113,6 +113,7 @@ extern Leg lLM;
 
 
 void NaturalAll(int Time);  // Set robot to "natural" position.
+void CenterAll(int Time);   // Set all servos to "ABSOLUTE_MIDDLE" position.
 
 
 #ifdef DEBUG

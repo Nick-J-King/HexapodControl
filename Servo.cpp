@@ -20,9 +20,16 @@ Servo::Servo(int Pin, bool Reverse, int NaturalPWM, float MinAngle, float MaxAng
 
 // >>> Need to flag if angle was clamped.
 
-// Set angle according to IK.
+// Set angle according to IK, or directly.
 void Servo::SetAngle(float angle, int Time)
 {
+  if (angle == UNKNOWN_ANGLE)
+  {
+    _CurrentAngle = angle;
+    _leg->InvalidateFootPosition();
+    return;
+  }
+
   angle = ClampFloat(angle, _MinAngle, _MaxAngle);
 
   int PWM;
@@ -48,6 +55,17 @@ void Servo::SetNatural(int Time)
   SetPWM(_NaturalPWM, Time);
 
   _CurrentAngle = 0.0;
+  _leg->InvalidateFootPosition();
+}
+
+
+// Set ABSOLUTE_MIDDLE PWM value.
+// This is used to check that the horns are in best position.
+void Servo::SetCenter(int Time)
+{
+  SetPWM(ABSOLUTE_MIDDLE, Time);
+
+  _CurrentAngle = UNKNOWN_ANGLE;
   _leg->InvalidateFootPosition();
 }
 
