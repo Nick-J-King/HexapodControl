@@ -23,33 +23,46 @@ float robotRotation;
 #define maxKnee 80.0
 #define minVertical -80.0
 #define maxVertical 80.0
-#define minHorizontal -45.0
-#define maxHorizontal 45.0
+#define minHorizontal -50.0
+#define maxHorizontal 50.0
 
-Servo sRFK(RFK, false, 1446, minKnee, maxKnee);
-Servo sRFV(RFV, true, 1428, minVertical, maxVertical);
-Servo sRFH(RFH, false, 1487, minHorizontal, maxHorizontal);
 
-Servo sRMK(RMK, false, 1568, minKnee, maxKnee);
-Servo sRMV(RMV, true, 1507, minVertical, maxVertical);
-Servo sRMH(RMH, false, 1535, minHorizontal, maxHorizontal);
+Servo sRFK(RFK, false, 1457, minKnee, maxKnee);
+Servo sRFV(RFV, true, 1439, minVertical, maxVertical);
+Servo sRFH(RFH, false, 1492, minHorizontal, maxHorizontal);
+// Horizontal PWM Forward: 990
+// Horizontal PWM Side: 1994
+// Calculated 45
 
-Servo sRBK(RBK, false, 1387, minKnee, maxKnee);  //*
-Servo sRBV(RBV, true, 1531, minVertical, maxVertical);
-Servo sRBH(RBH, false, 1368, minHorizontal, maxHorizontal); //*
+Servo sRMK(RMK, false, 1590, minKnee, maxKnee);
+Servo sRMV(RMV, true, 1529, minVertical, maxVertical);
+Servo sRMH(RMH, false, 1546, minHorizontal, maxHorizontal); // Calibrated by straight line.
+
+Servo sRBK(RBK, false, 1420, minKnee, maxKnee);  //*
+Servo sRBV(RBV, true, 1536, minVertical, maxVertical);
+Servo sRBH(RBH, false, 1548, minHorizontal, maxHorizontal); //*
+// Horizontal PWM Forward: 2044
+// Horizontal PWM Side: 1052
+// Calculated 45
 
 
 Servo sLFK(LFK, true, 1583, minKnee, maxKnee);
-Servo sLFV(LFV, false, 1359, minVertical, maxVertical); //*
-Servo sLFH(LFH, false, 1593, minHorizontal, maxHorizontal);
+Servo sLFV(LFV, false, 1404, minVertical, maxVertical); //*
+Servo sLFH(LFH, false, 1585, minHorizontal, maxHorizontal);
+// Horizontal PWM Forward: 2075
+// Horizontal PWM Side: 1096
+// Calculated 45
 
 Servo sLMK(LMK, true, 1435, minKnee, maxKnee);
-Servo sLMV(LMV, false, 1455, minVertical, maxVertical);
-Servo sLMH(LMH, false, 1500, minHorizontal, maxHorizontal);
+Servo sLMV(LMV, false, 1466, minVertical, maxVertical);
+Servo sLMH(LMH, false, 1511, minHorizontal, maxHorizontal); // Calibrated by straight line.
 
-Servo sLBK(LBK, true, 1528, minKnee, maxKnee);
-Servo sLBV(LBV, false, 1488, minVertical, maxVertical);
-Servo sLBH(LBH, false, 1327, minHorizontal, maxHorizontal); //*
+Servo sLBK(LBK, true, 1516, minKnee, maxKnee);
+Servo sLBV(LBV, false, 1493, minVertical, maxVertical);
+Servo sLBH(LBH, false, 1484, minHorizontal, maxHorizontal); //*
+// Horizontal PWM Forward: 994
+// Horizontal PWM Side: 1975
+// Calculated 45
 
 
 // 113.5 is HIPWIDTH + FEMURLENGTH

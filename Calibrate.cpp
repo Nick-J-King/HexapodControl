@@ -146,12 +146,12 @@ void loop()
 void StartForUpsideDown(int Time)
 {
   // Leave the knees pliant to start with. This makes calibrating the vertical servos easier.
-  lLF.SetServoAngles(UNKNOWN_ANGLE, -5.0, 0.0, Time);
-  lLM.SetServoAngles(UNKNOWN_ANGLE, -5.0, 0.0, Time);
-  lLB.SetServoAngles(UNKNOWN_ANGLE, -5.0, 0.0, Time);
-  lRF.SetServoAngles(UNKNOWN_ANGLE, -5.0, 0.0, Time);
-  lRM.SetServoAngles(UNKNOWN_ANGLE, -5.0, 0.0, Time);
-  lRB.SetServoAngles(UNKNOWN_ANGLE, -5.0, 0.0, Time);
+  lLF.SetServoAngles(0.0, 0.0, 0.0, Time);
+  lLM.SetServoAngles(0.0, 0.0, 0.0, Time);
+  lLB.SetServoAngles(0.0, 0.0, 0.0, Time);
+  lRF.SetServoAngles(0.0, 0.0, 0.0, Time);
+  lRM.SetServoAngles(0.0, 0.0, 0.0, Time);
+  lRB.SetServoAngles(0.0, 0.0, 0.0, Time);
 }
 
 
